@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
 class NML::AST::Document
-  def initialize(title, paragraphs, sections)
-    @title, @paragraphs, @sections = title, paragraphs, sections
+  def initialize(title, blocks, sections)
+    @title, @blocks, @sections = title, blocks, sections
   end
 
   def ==(other)
     title == other.title and
-      paragraphs == other.paragraphs and
+      blocks == other.blocks and
       sections == other.sections
   end
 
@@ -17,18 +17,18 @@ class NML::AST::Document
 
   def hash
     title.hash ^
-      paragraphs.hash ^
+      blocks.hash ^
       sections.hash
   end
 
   def inspect
     '#<%s %s, %s, %s>' % [self.class,
                           title,
-                          paragraphs.map{ |p| p.inspect }.join(', '),
-                          sections.map{ |s| s.inspect }.join(', ')]
+                          blocks.map{ |block| block.inspect }.join(', '),
+                          sections.map{ |section| section.inspect }.join(', ')]
   end
 
 protected
 
-  attr_reader :title, :paragraphs, :sections
+  attr_reader :title, :blocks, :sections
 end

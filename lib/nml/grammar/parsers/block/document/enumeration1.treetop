@@ -1,0 +1,22 @@
+module NML
+  module Grammar
+    module Parsers
+      module Block
+        module Document
+          grammar Enumeration1
+            include Common
+            include Item1
+
+            # NOTE: We would like to use [₁₂₃₄₅₆₇₈₉₀], but until we provide
+            # Treetop with a Unicode-enabled string, this won’t work.
+            rule enumeration1
+              blankline+
+              items:(('₁' / '₂' / '₃' / '₄' / '₅' / '₆' / '₇' / '₈' / '₉' / '₀') ' ' item1)+
+              <Nodes::Block::Enumeration>
+            end
+          end
+        end
+      end
+    end
+  end
+end

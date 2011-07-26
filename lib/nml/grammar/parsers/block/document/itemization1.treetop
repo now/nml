@@ -1,0 +1,20 @@
+module NML
+  module Grammar
+    module Parsers
+      module Block
+        module Document
+          grammar Itemization1
+            include Common
+            include Item1
+
+            rule itemization1
+              blankline+
+              items:('• ' item1)+
+              <Nodes::Block::Itemization>
+            end
+          end
+        end
+      end
+    end
+  end
+end

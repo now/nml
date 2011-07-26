@@ -1,3 +1,6 @@
+require 'nml/grammar/parsers/block/document/item1'
+require 'nml/grammar/parsers/block/document/enumeration1'
+require 'nml/grammar/parsers/block/document/itemization1'
 require 'nml/grammar/parsers/block/document/paragraph1'
 require 'nml/grammar/parsers/block/document/section1'
 
@@ -7,12 +10,16 @@ module NML
       module Block
         grammar Document
           include Common
+          include Enumeration1
+          include Itemization1
           include Paragraph1
           include Section1
 
           rule document
             title:nonblankline
-            paragraphs:(paragraph1*)
+            blocks:((enumeration1 /
+                     itemization1 /
+                     paragraph1)*)
             sections:(section1*)
             !.
             <Nodes::Block::Document>

@@ -1,0 +1,19 @@
+module NML
+  module Grammar
+    module Parsers
+      module Block
+        module Document
+          grammar Item1
+            include Common
+
+            rule item1
+              nonblankline
+              continuations:('  ' nonblankline)*
+              <Nodes::Block::Item>
+            end
+          end
+        end
+      end
+    end
+  end
+end
