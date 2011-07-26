@@ -17,12 +17,17 @@ module NML
 
           rule document
             title:nonblankline
-            blocks:((enumeration1 /
-                     itemization1 /
-                     paragraph1)*)
+            blocks:(block1*)
             sections:(section1*)
             !.
             <Nodes::Block::Document>
+          end
+
+          rule block1
+            blankline+
+            block:(enumeration1 /
+                   itemization1 /
+                   paragraph1)
           end
         end
       end

@@ -7,8 +7,7 @@ module NML
             include Common
 
             rule paragraph1
-              blankline+
-              lines:('  ' nonblankline)+
+              ('  ' nonblankline)+
               <Nodes::Block::Paragraph>
             end
           end

@@ -8,8 +8,7 @@ module NML
             include Item1
 
             rule itemization1
-              blankline+
-              items:('• ' item1)+
+              ('• ' item1)+
               <Nodes::Block::Itemization>
             end
           end
