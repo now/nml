@@ -3,10 +3,11 @@
 require 'treetop'
 
 module NML
-  require 'nml/ast'
+  autoload :AST, 'nml/ast'
+  autoload :Grammar, 'nml/grammar'
   require 'nml/parser'
 
   def self.parse(string)
-    Parser::NMLParser.new.parse(string)
+    Grammar::Parsers::Block::DocumentParser.new.parse(string)
   end
 end

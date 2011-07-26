@@ -1,0 +1,21 @@
+module NML
+  module Grammar
+    module Parsers
+      module Block
+        module Document
+          grammar Section1
+            include Common
+
+            rule section1
+              blankline+
+              '§ ' title:nonblankline
+#              paragraphs:(paragraph1*)
+#              sections:(section1*)
+              <Nodes::Block::Section>
+            end
+          end
+        end
+      end
+    end
+  end
+end

@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 
 module NML::Parser
-  require 'nml/parser/error'
-  require 'nml/parser/extensions'
+  autoload :Error, 'nml/parser/error'
+  autoload :Extensions, 'nml/parser/extensions'
+end
 
-  require 'nml/parser/document'
-  require 'nml/parser/paragraph'
-
-  Treetop.load File.expand_path('../parser/nml.treetop', __FILE__)
+class Treetop::Runtime::CompiledParser
+  extend NML::Parser::Extensions
 end

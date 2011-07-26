@@ -1,0 +1,46 @@
+require 'nml/grammar/parsers/block/document/paragraph1'
+require 'nml/grammar/parsers/block/document/section1'
+
+module NML
+  module Grammar
+    module Parsers
+      module Block
+        grammar Document
+          include Common
+          include Paragraph1
+          include Section1
+
+          rule document
+            title:nonblankline
+            paragraphs:(paragraph1*)
+            sections:(section1*)
+            !.
+            <Nodes::Block::Document>
+          end
+        end
+      end
+    end
+  end
+end
+
+#grammar Test
+#  rule link
+#    title link_definition
+#  end
+#
+#  rule link_definition
+#    at uri
+#  end
+#
+#  rule title
+#    (!link_definition .)+
+#  end
+#
+#  rule at
+#    ' at '
+#  end
+#
+#  rule uri
+#    (!at .)* !.
+#  end
+#end

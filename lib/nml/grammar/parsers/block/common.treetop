@@ -1,0 +1,17 @@
+module NML
+  module Grammar
+    module Parsers
+      module Block
+        grammar Common
+          rule blankline
+            "\n"
+          end
+
+          rule nonblankline
+            [^\n]+ ("\n" / !.)
+          end
+        end
+      end
+    end
+  end
+end

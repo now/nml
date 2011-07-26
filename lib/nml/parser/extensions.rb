@@ -15,7 +15,3 @@ module NML::Parser::Extensions
     tree.to_ast
   end
 end
-
-class Treetop::Runtime::CompiledParser
-  extend NML::Parser::Extensions
-end
