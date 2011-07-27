@@ -29,7 +29,7 @@ module NML
           rule title
             [^\n]+
             ("\n" inlines1)*
-            <Nodes::Block::Inlines>
+            <Nodes::Block::Title>
           end
 
           rule sections

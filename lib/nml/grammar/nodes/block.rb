@@ -8,4 +8,5 @@ module NML::Grammar::Nodes::Block
   autoload :Itemization, 'nml/grammar/nodes/block/itemization'
   autoload :Paragraph, 'nml/grammar/nodes/block/paragraph'
   autoload :Section, 'nml/grammar/nodes/block/section'
+  autoload :Title, 'nml/grammar/nodes/block/title'
 end
