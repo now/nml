@@ -6,10 +6,6 @@ module NML
           rule blankline
             "\n"
           end
-
-          rule nonblankline
-            [^\n]+ ("\n" / !.)
-          end
         end
       end
     end

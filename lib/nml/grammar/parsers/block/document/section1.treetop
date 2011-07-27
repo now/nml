@@ -4,13 +4,19 @@ module NML
       module Block
         module Document
           grammar Section1
-            include Common
+            include Inlines1
 
             rule section1
-              '§ ' title:nonblankline
+              '§ ' title
 #              paragraphs:(paragraph1*)
 #              sections:(section1*)
               <Nodes::Block::Section>
+            end
+
+            rule title
+              [^\n]+
+              ("\n  " inlines1)*
+              <Nodes::Block::Inlines>
             end
           end
         end

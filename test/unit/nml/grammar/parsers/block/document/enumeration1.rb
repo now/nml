@@ -7,11 +7,11 @@ Expectations do
     NML::Grammar::Parsers::Block::Document::Enumeration1Parser.ast("₁ A\n₂ B\n₃ C")
   end
 
-  expect NML::AST::Enumeration.new(NML::AST::Paragraph.new("A\nB\nC")) do
+  expect NML::AST::Enumeration.new(NML::AST::Paragraph.new('A B C')) do
     NML::Grammar::Parsers::Block::Document::Enumeration1Parser.ast("₁ A\n  B\n  C")
   end
 
-  expect NML::AST::Enumeration.new(NML::AST::Paragraph.new("A\nB\nC"),
+  expect NML::AST::Enumeration.new(NML::AST::Paragraph.new('A B C'),
                                    NML::AST::Paragraph.new('D E F')) do
     NML::Grammar::Parsers::Block::Document::Enumeration1Parser.ast("₁ A\n  B\n  C\n₂ D E F")
   end

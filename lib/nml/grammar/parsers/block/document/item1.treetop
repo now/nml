@@ -4,12 +4,11 @@ module NML
       module Block
         module Document
           grammar Item1
-            include Common
+            include Inlines1
 
             rule item1
-              nonblankline
-              continuations:('  ' nonblankline)*
-              <Nodes::Block::Item>
+              inlines1 ("\n" / !.)
+              <Nodes::Block::Paragraph>
             end
           end
         end

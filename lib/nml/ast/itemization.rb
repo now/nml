@@ -18,7 +18,7 @@ class NML::AST::Itemization
   end
 
   def inspect
-    '#<%s %s>' % [self.class, items.join(', ')]
+    '#<%s %s>' % [self.class, items.map{ |item| item.inspect }.join(', ')]
   end
 
 protected

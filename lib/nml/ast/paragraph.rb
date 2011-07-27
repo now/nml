@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 class NML::AST::Paragraph
-  def initialize(content)
-    @content = content
+  def initialize(*inlines)
+    @inlines = inlines
   end
 
   def ==(other)
-    content == other.content
+    inlines == other.inlines
   end
 
   def eql?(other)
@@ -14,14 +14,14 @@ class NML::AST::Paragraph
   end
 
   def hash
-    content.hash
+    inlines.hash
   end
 
   def inspect
-    '#<%s %p>' % [self.class, content]
+    '#<%s %s>' % [self.class, inlines.join("")]
   end
 
 protected
 
-  attr_reader :content
+  attr_reader :inlines
 end

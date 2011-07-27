@@ -4,7 +4,6 @@ module NML
       module Block
         module Document
           grammar Itemization1
-            include Common
             include Item1
 
             rule itemization1

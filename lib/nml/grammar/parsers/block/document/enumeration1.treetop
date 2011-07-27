@@ -4,7 +4,6 @@ module NML
       module Block
         module Document
           grammar Enumeration1
-            include Common
             include Item1
 
             # NOTE: We would like to use [₁₂₃₄₅₆₇₈₉₀], but until we provide

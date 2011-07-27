@@ -7,11 +7,11 @@ Expectations do
     NML::Grammar::Parsers::Block::Document::Itemization1Parser.ast("• A\n• B\n• C")
   end
 
-  expect NML::AST::Itemization.new(NML::AST::Paragraph.new("A\nB\nC")) do
+  expect NML::AST::Itemization.new(NML::AST::Paragraph.new('A B C')) do
     NML::Grammar::Parsers::Block::Document::Itemization1Parser.ast("• A\n  B\n  C")
   end
 
-  expect NML::AST::Itemization.new(NML::AST::Paragraph.new("A\nB\nC"),
+  expect NML::AST::Itemization.new(NML::AST::Paragraph.new('A B C'),
                                    NML::AST::Paragraph.new('D E F')) do
     NML::Grammar::Parsers::Block::Document::Itemization1Parser.ast("• A\n  B\n  C\n• D E F")
   end

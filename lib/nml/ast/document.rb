@@ -23,7 +23,7 @@ class NML::AST::Document
 
   def inspect
     '#<%s %s, %s, %s>' % [self.class,
-                          title,
+                          title.map{ |inline| inline.inspect }.join(""),
                           blocks.map{ |block| block.inspect }.join(', '),
                           sections.map{ |section| section.inspect }.join(', ')]
   end
