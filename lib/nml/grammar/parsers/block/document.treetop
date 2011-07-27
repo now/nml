@@ -19,7 +19,7 @@ module NML
 
           rule document
             title
-            blocks:(block1*)
+            blocks
             sections
             blankline*
             !.
@@ -32,16 +32,20 @@ module NML
             <Nodes::Block::Title>
           end
 
-          rule sections
+          rule blocks
             (blankline+
-             section1)*
+             block1)*
           end
 
           rule block1
-            blankline+
-            block:(enumeration1 /
-                   itemization1 /
-                   paragraph1)
+            enumeration1 /
+            itemization1 /
+            paragraph1
+          end
+
+          rule sections
+            (blankline+
+             section1)*
           end
         end
       end
