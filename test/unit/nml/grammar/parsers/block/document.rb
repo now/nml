@@ -5,6 +5,14 @@ Expectations do
     NML::Grammar::Parsers::Block::DocumentParser.ast('Title')
   end
 
+  expect NML::AST::Document.new('Title', [], []) do
+    NML::Grammar::Parsers::Block::DocumentParser.ast("Title\n")
+  end
+
+  expect NML::AST::Document.new("Title\nof Two Lines", [], []) do
+    NML::Grammar::Parsers::Block::DocumentParser.ast("Title\nof Two Lines")
+  end
+
   expect NML::AST::Document.new('Title', [
            NML::AST::Paragraph.new("Line11\nLine12"),
            NML::AST::Paragraph.new("Line21")], []) do

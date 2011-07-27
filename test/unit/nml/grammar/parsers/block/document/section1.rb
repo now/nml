@@ -2,6 +2,6 @@
 
 Expectations do
   expect NML::AST::Section.new('Title') do
-    NML::Grammar::Parsers::Block::Document::Section1Parser.ast("\n§ Title")
+    NML::Grammar::Parsers::Block::Document::Section1Parser.ast('§ Title')
   end
 end

@@ -7,7 +7,6 @@ module NML
             include Common
 
             rule section1
-              blankline+
               '§ ' title:nonblankline
 #              paragraphs:(paragraph1*)
 #              sections:(section1*)

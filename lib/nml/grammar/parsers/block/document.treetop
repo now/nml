@@ -16,11 +16,16 @@ module NML
           include Section1
 
           rule document
-            title:nonblankline
+            title:(nonblankline+)
             blocks:(block1*)
-            sections:(section1*)
+            sections
             !.
             <Nodes::Block::Document>
+          end
+
+          rule sections
+            (blankline+
+             section1)*
           end
 
           rule block1
