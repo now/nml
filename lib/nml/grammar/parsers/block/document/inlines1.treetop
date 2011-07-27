@@ -4,9 +4,11 @@ module NML
       module Block
         module Document
           grammar Inlines1
+            include Inline
+
             rule inlines1
-              [^\n]+
-              ("\n  " [^\n]+)*
+              inlines
+              ("\n  " inlines)*
               <Nodes::Block::Inlines>
             end
           end

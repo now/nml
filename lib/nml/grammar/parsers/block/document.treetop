@@ -12,6 +12,7 @@ module NML
         grammar Document
           include Common
           include Enumeration1
+          include Inline
           include Inlines1
           include Itemization1
           include Paragraph1
@@ -27,8 +28,8 @@ module NML
           end
 
           rule title
-            [^\n]+
-            ("\n" inlines1)*
+            inlines
+            ("\n" inlines)*
             <Nodes::Block::Title>
           end
 

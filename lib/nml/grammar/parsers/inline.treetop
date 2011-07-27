@@ -1,0 +1,11 @@
+module NML
+  module Grammar
+    module Parsers
+      grammar Inline
+        rule inlines
+          [^\n]+
+        end
+      end
+    end
+  end
+end
