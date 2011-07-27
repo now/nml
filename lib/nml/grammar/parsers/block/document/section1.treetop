@@ -14,9 +14,8 @@ module NML
             end
 
             rule title
-              [^\n]+
-              ("\n  " inlines1)*
-              <Nodes::Block::Inlines>
+              '' inlines1
+              <Nodes::Block::Title>
             end
           end
         end
