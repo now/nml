@@ -1,23 +1,17 @@
-module NML
-  module Grammar
-    module Parsers
-      module Block
-        grammar Section1
-          include Inlines1
+module NML::Grammar::Parsers::Block
+  grammar Section1
+    include Inlines1
 
-          rule section1
-            '§ ' title
-#              paragraphs:(paragraph1*)
-#              sections:(section1*)
-            <Nodes::Block::Section>
-          end
+    rule section1
+      '§ ' title
+      # paragraphs:(paragraph1*)
+      # sections:(section1*)
+      <NML::Grammar::Nodes::Block::Section>
+    end
 
-          rule title
-            '' inlines1
-            <Nodes::Block::Title>
-          end
-        end
-      end
+    rule title
+      '' inlines1
+      <NML::Grammar::Nodes::Block::Title>
     end
   end
 end

@@ -1,16 +1,10 @@
-module NML
-  module Grammar
-    module Parsers
-      module Block
-        grammar Itemization1
-          include Item1
+module NML::Grammar::Parsers::Block
+  grammar Itemization1
+    include Item1
 
-          rule itemization1
-            ('• ' item1)+
-            <Nodes::Block::Itemization>
-          end
-        end
-      end
+    rule itemization1
+      ('• ' item1)+
+      <NML::Grammar::Nodes::Block::Itemization>
     end
   end
 end

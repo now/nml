@@ -1,55 +1,41 @@
-require 'nml/grammar/parsers/block/inlines1'
-require 'nml/grammar/parsers/block/paragraph1'
-require 'nml/grammar/parsers/block/item1'
-require 'nml/grammar/parsers/block/enumeration1'
-require 'nml/grammar/parsers/block/itemization1'
-require 'nml/grammar/parsers/block/section1'
+module NML::Grammar::Parsers::Block
+  grammar Document
+    include Common
+    include Enumeration1
+    include Inlines1
+    include Itemization1
+    include Paragraph1
+    include Section1
 
-module NML
-  module Grammar
-    module Parsers
-      module Block
-        grammar Document
-          include Common
-          include Enumeration1
-          include Inline
-          include Inlines1
-          include Itemization1
-          include Paragraph1
-          include Section1
+    rule document
+      title
+      blocks
+      sections
+      blankline*
+      !.
+      <NML::Grammar::Nodes::Block::Document>
+    end
 
-          rule document
-            title
-            blocks
-            sections
-            blankline*
-            !.
-            <Nodes::Block::Document>
-          end
+    rule title
+      inlines
+      ("\n" inlines)*
+      <NML::Grammar::Nodes::Block::Title>
+    end
 
-          rule title
-            inlines
-            ("\n" inlines)*
-            <Nodes::Block::Title>
-          end
+    rule blocks
+      (blankline+
+        block1)*
+    end
 
-          rule blocks
-            (blankline+
-             block1)*
-          end
+    rule block1
+      enumeration1 /
+      itemization1 /
+      paragraph1
+    end
 
-          rule block1
-            enumeration1 /
-            itemization1 /
-            paragraph1
-          end
-
-          rule sections
-            (blankline+
-             section1)*
-          end
-        end
-      end
+    rule sections
+      (blankline+
+        section1)*
     end
   end
 end

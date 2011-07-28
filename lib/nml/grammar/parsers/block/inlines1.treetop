@@ -1,17 +1,11 @@
-module NML
-  module Grammar
-    module Parsers
-      module Block
-        grammar Inlines1
-          include Inline
+module NML::Grammar::Parsers::Block
+  grammar Inlines1
+    include NML::Grammar::Parsers::Inline
 
-          rule inlines1
-            inlines
-            ("\n  " inlines)*
-            <Nodes::Block::Inlines>
-          end
-        end
-      end
+    rule inlines1
+      inlines
+      ("\n  " inlines)*
+      <NML::Grammar::Nodes::Block::Inlines>
     end
   end
 end
