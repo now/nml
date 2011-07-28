@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 module NML::Grammar::Nodes::Block
+  autoload :Blocks, 'nml/grammar/nodes/block/blocks'
   autoload :Document, 'nml/grammar/nodes/block/document'
   autoload :Enumeration, 'nml/grammar/nodes/block/enumeration'
   autoload :Inlines, 'nml/grammar/nodes/block/inlines'

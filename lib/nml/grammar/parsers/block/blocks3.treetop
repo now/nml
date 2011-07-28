@@ -1,0 +1,19 @@
+module NML::Grammar::Parsers::Block
+  grammar Blocks3
+    include Common
+    include Enumeration3
+    include Itemization3
+    include Paragraph3
+
+    rule blocks3
+      (blankline+
+       block:block3)*
+    end
+
+    rule block3
+      enumeration3 /
+      itemization3 /
+      paragraph3
+    end
+  end
+end

@@ -26,7 +26,7 @@ module NML::AST::Base
   end
 
   def inspect
-    '#<%s %p>' % [self.class, children]
+    '%s.new(%s)' % [self.class, children.map{ |c| c.inspect }.join(', ')]
   end
 
 protected

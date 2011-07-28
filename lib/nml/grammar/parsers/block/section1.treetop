@@ -1,15 +1,12 @@
 module NML::Grammar::Parsers::Block
   grammar Section1
-    include Common
+    include Blocks2
     include Inlines1
-    include Enumeration2
-    include Itemization2
-    include Paragraph2
     include Section2
 
     rule section1
       '§ ' title
-      blocks
+      blocks:blocks2
       sections
       <NML::Grammar::Nodes::Block::Section>
     end
@@ -17,17 +14,6 @@ module NML::Grammar::Parsers::Block
     rule title
       '' inlines1
       <NML::Grammar::Nodes::Block::Title>
-    end
-
-    rule blocks
-      (blankline+
-       block:block2)*
-    end
-
-    rule block2
-      enumeration2 /
-      itemization2 /
-      paragraph2
     end
 
     rule sections

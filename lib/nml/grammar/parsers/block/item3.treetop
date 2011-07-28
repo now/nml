@@ -1,9 +1,15 @@
 module NML::Grammar::Parsers::Block
   grammar Item3
-    include Inlines3
+    include Inlines4
 
     rule item3
-      inlines:inlines3 ("\n" / !.)
+      '' first
+      rest:''
+      <NML::Grammar::Nodes::Block::Item>
+    end
+
+    rule first
+      inlines:inlines4 ("\n" / !.)
       <NML::Grammar::Nodes::Block::Paragraph>
     end
   end
