@@ -24,7 +24,7 @@ module NML::Grammar::Parsers::Block
 
     rule blocks
       (blankline+
-        block1)*
+       block1)*
     end
 
     rule block1
@@ -35,7 +35,7 @@ module NML::Grammar::Parsers::Block
 
     rule sections
       (blankline+
-        section1)*
+       section1)*
     end
   end
 end

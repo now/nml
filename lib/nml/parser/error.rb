@@ -6,5 +6,9 @@ class NML::Parser::Error < StandardError
     @line, @column = line, column
   end
 
+  def to_s
+    '%d:%d: %s' % [line, column, super]
+  end
+
   attr_reader :line, :column
 end

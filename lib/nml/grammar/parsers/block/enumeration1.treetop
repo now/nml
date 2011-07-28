@@ -5,7 +5,7 @@ module NML::Grammar::Parsers::Block
     # NOTE: We would like to use [₁₂₃₄₅₆₇₈₉₀], but until we provide
     # Treetop with a Unicode-enabled string, this won’t work.
     rule enumeration1
-      (('₁' / '₂' / '₃' / '₄' / '₅' / '₆' / '₇' / '₈' / '₉' / '₀') ' ' item1)+
+      (('₁' / '₂' / '₃' / '₄' / '₅' / '₆' / '₇' / '₈' / '₉' / '₀') '   ' item:item1)+
       <NML::Grammar::Nodes::Block::Enumeration>
     end
   end

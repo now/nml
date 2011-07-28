@@ -1,9 +1,9 @@
 module NML::Grammar::Parsers::Block
-  grammar Item1
-    include Inlines1
+  grammar Paragraph2
+    include Inlines2
 
-    rule item1
-      inlines:inlines1 ("\n" / !.)
+    rule paragraph2
+      '    ' inlines:inlines2
       <NML::Grammar::Nodes::Block::Paragraph>
     end
   end

@@ -1,9 +1,9 @@
 module NML::Grammar::Parsers::Block
-  grammar Itemization1
-    include Item1
+  grammar Itemization2
+    include Item2
 
-    rule itemization1
-      ('•   ' item:item1)+
+    rule itemization2
+      ('  •   ' item:item2)+
       <NML::Grammar::Nodes::Block::Itemization>
     end
   end

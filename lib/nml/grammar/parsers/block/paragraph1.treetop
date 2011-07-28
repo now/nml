@@ -3,7 +3,7 @@ module NML::Grammar::Parsers::Block
     include Inlines1
 
     rule paragraph1
-      '  ' inlines1
+      '  ' inlines:inlines1
       <NML::Grammar::Nodes::Block::Paragraph>
     end
   end

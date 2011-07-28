@@ -10,7 +10,7 @@ module NML::Parser::Extensions
                                       'one of %s' % [parser.terminal_failures.
                                                      map{ |f| f.expected_string.inspect }.
                                                      uniq.
-                                                     join("\n")]),
+                                                     join(', ')]),
                                    parser.failure_line,
                                    parser.failure_column)
     tree.to_ast

@@ -1,0 +1,18 @@
+module NML::Grammar::Parsers::Block
+  grammar Section2
+    include Common
+    include Inlines2
+
+    rule section2
+      '  § ' title
+      blocks:(blankline*) # NOTE: This is just a placeholder.
+      sections:(blankline*) # NOTE: This is just a placeholder.
+      <NML::Grammar::Nodes::Block::Section>
+    end
+
+    rule title
+      '' inlines2
+      <NML::Grammar::Nodes::Block::Title>
+    end
+  end
+end
