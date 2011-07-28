@@ -1,0 +1,10 @@
+module NML::Grammar::Parsers::Block
+  grammar Itemization3
+    include Item3
+
+    rule itemization3
+      ('    •   ' item:item3)+
+      <NML::Grammar::Nodes::Block::Itemization>
+    end
+  end
+end

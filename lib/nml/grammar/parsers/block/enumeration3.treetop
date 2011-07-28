@@ -1,0 +1,10 @@
+module NML::Grammar::Parsers::Block
+  grammar Enumeration3
+    include Item3
+
+    rule enumeration3
+      ('    ' ('₁' / '₂' / '₃' / '₄' / '₅' / '₆' / '₇' / '₈' / '₉' / '₀') '   ' item:item3)+
+      <NML::Grammar::Nodes::Block::Enumeration>
+    end
+  end
+end
