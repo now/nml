@@ -1,0 +1,16 @@
+module NML
+  module Grammar
+    module Parsers
+      module Block
+        grammar Item1
+          include Inlines1
+
+          rule item1
+            inlines1 ("\n" / !.)
+            <Nodes::Block::Paragraph>
+          end
+        end
+      end
+    end
+  end
+end

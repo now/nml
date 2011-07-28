@@ -1,9 +1,9 @@
-require 'nml/grammar/parsers/block/document/inlines1'
-require 'nml/grammar/parsers/block/document/paragraph1'
-require 'nml/grammar/parsers/block/document/item1'
-require 'nml/grammar/parsers/block/document/enumeration1'
-require 'nml/grammar/parsers/block/document/itemization1'
-require 'nml/grammar/parsers/block/document/section1'
+require 'nml/grammar/parsers/block/inlines1'
+require 'nml/grammar/parsers/block/paragraph1'
+require 'nml/grammar/parsers/block/item1'
+require 'nml/grammar/parsers/block/enumeration1'
+require 'nml/grammar/parsers/block/itemization1'
+require 'nml/grammar/parsers/block/section1'
 
 module NML
   module Grammar

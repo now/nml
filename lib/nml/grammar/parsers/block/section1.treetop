@@ -1,0 +1,23 @@
+module NML
+  module Grammar
+    module Parsers
+      module Block
+        grammar Section1
+          include Inlines1
+
+          rule section1
+            '§ ' title
+#              paragraphs:(paragraph1*)
+#              sections:(section1*)
+            <Nodes::Block::Section>
+          end
+
+          rule title
+            '' inlines1
+            <Nodes::Block::Title>
+          end
+        end
+      end
+    end
+  end
+end
