@@ -1,0 +1,17 @@
+module NML::Grammar::Parsers::Inline
+  grammar Code
+    rule code
+      '‹' unparsed endcode
+      <NML::Grammar::Nodes::Inline::Code>
+    end
+
+    rule unparsed
+      (!endcode [^\n])+
+      <NML::Grammar::Nodes::Inline::Text>
+    end
+
+    rule endcode
+      '›'
+    end
+  end
+end

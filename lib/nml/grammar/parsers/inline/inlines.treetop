@@ -10,8 +10,21 @@ module NML::Grammar::Parsers::Inline
     end
 
     rule text
-      [^\n]+
+      (!('‹' / endinline) [^\n])+
       <NML::Grammar::Nodes::Inline::Text>
+    end
+
+    rule endinline
+      endcode /
+      endemphasis
+    end
+
+    rule endcode
+      '›'
+    end
+
+    rule endemphasis
+      '/'
     end
   end
 end

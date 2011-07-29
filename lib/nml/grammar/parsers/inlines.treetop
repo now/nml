@@ -1,5 +1,6 @@
 module NML::Grammar::Parsers
   grammar Inlines
+    include Inline::Code
     include Inline::Emphasis
     include Inline::Inlines
 
@@ -8,6 +9,7 @@ module NML::Grammar::Parsers
     end
 
     rule inline
+      code /
       emphasis /
       text
     end
