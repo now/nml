@@ -3,6 +3,7 @@
 module NML::AST
   autoload :Base, 'nml/ast/base'
   autoload :Document, 'nml/ast/document'
+  autoload :Emphasis, 'nml/ast/emphasis'
   autoload :Enumeration, 'nml/ast/enumeration'
   autoload :Item, 'nml/ast/item'
   autoload :Itemization, 'nml/ast/itemization'

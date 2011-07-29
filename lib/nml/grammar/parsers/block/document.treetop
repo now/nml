@@ -17,9 +17,14 @@ module NML::Grammar::Parsers::Block
     end
 
     rule title
-      inlines
-      ("\n" inlines)*
+      '' inlines:inlines0
       <NML::Grammar::Nodes::Block::Title>
+    end
+
+    rule inlines0
+      first:inlines
+      rest:(("\n" inlines)*)
+      <NML::Grammar::Nodes::Block::Inlines>
     end
 
     rule blocks

@@ -11,7 +11,7 @@ module NML::Grammar::Parsers::Block
     end
 
     rule title
-      '' inlines2
+      '' inlines:inlines2
       <NML::Grammar::Nodes::Block::Title>
     end
   end

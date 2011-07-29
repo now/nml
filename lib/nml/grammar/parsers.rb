@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 module NML::Grammar::Parsers
-  require 'nml/grammar/parsers/inline'
-
   autoload :Block, 'nml/grammar/parsers/block'
+  autoload :Inline, 'nml/grammar/parsers/inline'
+  require 'nml/grammar/parsers/inlines'
 end

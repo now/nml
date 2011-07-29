@@ -1,0 +1,17 @@
+module NML::Grammar::Parsers::Inline
+  grammar Inlines
+    rule inlines
+      inline+
+      <NML::Grammar::Nodes::Inline::Inlines>
+    end
+
+    rule inline
+      text
+    end
+
+    rule text
+      [^\n]+
+      <NML::Grammar::Nodes::Inline::Text>
+    end
+  end
+end

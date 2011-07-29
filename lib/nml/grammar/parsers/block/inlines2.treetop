@@ -1,10 +1,10 @@
 module NML::Grammar::Parsers::Block
   grammar Inlines2
-    include NML::Grammar::Parsers::Inline
+    include NML::Grammar::Parsers::Inlines
 
     rule inlines2
-      inlines
-      ("\n    " inlines)*
+      first:inlines
+      rest:(("\n    " inlines)*)
       <NML::Grammar::Nodes::Block::Inlines>
     end
   end

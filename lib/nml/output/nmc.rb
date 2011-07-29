@@ -52,7 +52,7 @@ private
       when String
         @output << node
       else
-        raise TypeError, 'unknown node type: %p' % node
+        raise TypeError, 'unknown node type: %p' % [node]
       end
     end
 

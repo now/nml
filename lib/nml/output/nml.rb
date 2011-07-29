@@ -48,7 +48,7 @@ private
     when String
       xml.text node
     else
-      raise TypeError, 'unknown node type: %p' % node
+      raise TypeError, 'unknown node type: %p' % [node]
     end
   end
 

@@ -1,0 +1,19 @@
+module NML::Grammar::Parsers::Inline
+  grammar Emphasis
+    include Inlines
+
+    rule emphasis
+      '/' inlines endemphasis
+      <NML::Grammar::Nodes::Inline::Emphasis>
+    end
+
+    rule text
+      (!endemphasis [^\n])+
+      <NML::Grammar::Nodes::Inline::Text>
+    end
+
+    rule endemphasis
+      '/'
+    end
+  end
+end

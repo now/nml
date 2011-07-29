@@ -12,7 +12,7 @@ module NML::Grammar::Parsers::Block
     end
 
     rule title
-      '' inlines1
+      '' inlines:inlines1
       <NML::Grammar::Nodes::Block::Title>
     end
 
