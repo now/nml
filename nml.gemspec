@@ -17,6 +17,8 @@ Gem::Specification.new do |s|
 
   s.files = Dir['{lib,test}/**/*.rb'] + %w[README Rakefile]
 
+  s.add_runtime_dependency 'nokogiri', '~> 1.5'
+
   s.add_development_dependency 'lookout', '~> 2.0'
   s.add_development_dependency 'rbtags', '~> 0.1.0'
   s.add_development_dependency 'treetop', '~> 1.4.10'
