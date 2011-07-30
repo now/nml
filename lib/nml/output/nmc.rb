@@ -28,8 +28,12 @@ private
 
     def output(node)
       case node
+      when NML::AST::Code
+        inline '‹', node, '›'
       when NML::AST::Document
         children node
+      when NML::AST::Emphasis
+        inline '/', node, '/'
       when NML::AST::Enumeration
         block
         numbers = ['₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉', '₀']
@@ -58,6 +62,12 @@ private
 
     def block
       @output << @block
+    end
+
+    def inline(before, node, after)
+      @output << before
+      children node
+      @output << after
     end
 
     def items(node)

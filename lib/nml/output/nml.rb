@@ -17,8 +17,16 @@ private
 
   def output(xml, node)
     case node
+    when NML::AST::Code
+      xml.code{
+        children xml, node
+      }
     when NML::AST::Document
       xml.nml{
+        children xml, node
+      }
+    when NML::AST::Emphasis
+      xml.emphasis{
         children xml, node
       }
     when NML::AST::Enumeration
