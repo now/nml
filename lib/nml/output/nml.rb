@@ -30,7 +30,7 @@ private
         children xml, node
       }
     when NML::AST::Enumeration
-      xml.enumeration{
+      xml.enumerate{
         children xml, node
       }
     when NML::AST::Item
@@ -38,7 +38,7 @@ private
         children xml, node
       }
     when NML::AST::Itemization
-      xml.itemization{
+      xml.itemize{
         children xml, node
       }
     when NML::AST::Paragraph
