@@ -1,0 +1,18 @@
+common.number.datatype = xsd:nonNegativeInteger { pattern = '\d+' }
+
+common.xml.base.attribute = attribute xml:base { xsd:anyURI }
+common.xml.id.attribute = attribute xml:id { xsd:ID }
+common.xml.lang.attribute = attribute xml:lang { xsd:language }
+common.class.attribute = attribute class { xsd:NMTOKENS }
+
+common.attributes =
+  common.xml.base.attribute?,
+  common.xml.id.attribute?,
+  common.xml.lang.attribute?,
+  common.class.attribute?
+
+common.phrasing.elements = notAllowed
+common.flow.elements = common.phrasing.elements
+
+common.phrasing.content = (text | common.phrasing.elements)*
+common.flow.content = common.flow.elements*

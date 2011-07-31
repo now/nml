@@ -1,0 +1,75 @@
+section = element section { section.attributes, section.content }
+section.attributes = common.attributes
+section.content =
+  title,
+  subtitle?,
+  common.flow.content
+
+common.flow.elements |= section
+
+p = element p { p.attributes, p.content }
+p.attributes = common.attributes
+p.content = common.phrasing.content
+
+common.flow.elements |= p
+
+flow.code = element code { flow.code.attributes, flow.code.content }
+flow.code.language.attribute = attribute language { text }
+flow.code.attributes =
+  common.attributes,
+  flow.code.language.attribute
+flow.code.content = common.phrasing.content
+
+common.flow.elements |= code
+
+equation = element equation { equation.attributes, text }
+equation.attributes = common.attributes
+
+common.flow.elements |= equation
+
+figure = element figure { figure.attributes, figure.content }
+figure.attributes =
+  common.attributes,
+  attribute float { 'left' | 'right' }
+figure.content = image
+
+common.flow.elements |= figure
+
+definitions = element definitions {
+  definitions.attributes,
+  definitions.content
+}
+definitions.attributes = common.attributes
+definitions.content = definitions.item+
+
+common.flow.elements |= definitions
+
+definitions.item = element item {
+  definitions.item.attributes,
+  definitions.item.content
+}
+definitions.item.attributes = common.attributes
+definitions.item.content = term+, definition
+
+term = element term { term.attributes, common.phrasing.content }
+term.attributes = common.attributes
+
+definition = element definition { definition.attributes, definitions.content }
+definition.attributes = common.attributes
+definition.content = common.flow.content
+
+itemize = element itemize { itemize.attributes, itemize.content }
+itemize.attributes = common.attributes
+itemize.content = item+
+
+common.flow.elements |= itemize
+
+item = element item { item.attributes, item.content }
+item.attributes = common.attributes
+item.content = common.flow.content
+
+enumerate = element enumerate { enumerate.attributes, enumerate.content }
+enumerate.attributes = common.attributes
+enumerate.content = item+
+
+common.flow.elements |= enumerate

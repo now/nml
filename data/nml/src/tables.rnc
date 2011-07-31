@@ -1,0 +1,31 @@
+table = element table { table.attributes, table.content }
+table.attributes = common.attributes
+table.content =
+  header?,
+  footer?,
+  body
+
+common.flow.elements |= table
+
+header = element header { header.attributes, header.content }
+header.attributes = common.attributes
+header.content = row+
+
+row = element row { row.attributes, row.content }
+row.attributes = common.attributes
+row.content = entry*
+
+entry = element entry { entry.attributes, entry.content }
+entry.attributes =
+  common.attributes,
+  attribute columnspan { text }?,
+  attribute rowspan { text }?
+entry.content = common.flow.content
+
+footer = element footer { footer.attributes, footer.content }
+footer.attributes = common.attributes
+footer.content = row+
+
+body = element body { body.attributes, body.content }
+body.attributes = common.attributes
+body.content = row+

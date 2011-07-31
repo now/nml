@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar>
+  <terminal name="end">
+    <end/>
+  </terminal>
+
+  <ignore char=" "/>
+  <Expression>
+    <AdditiveExpression>
+      <number>1</number>
+      <AdditiveExpression-rest>
+        <plus>+</plus>
+        <number>1</number>
+        <AdditiveExpression-rest/>
+      </AdditiveExpression-rest>
+    </AdditiveExpression>
+    <end/>
+  </Expression>
+
+  <bnf>
+    plus ::= '+';
+    minus ::= '-';
+    times ::= '*';
+    div ::= '/';
+    lbrace ::= '(';
+    rbrace ::= ')';
+    number ::= [.0123456789];
+    
+    Start ::= Exp end;
+
+    Exp1 ::= Exp1 plus Term
+           | Exp1 minus Term
+           | Term;
+
+    Term ::= Term times Factor
+           | Term div Factor
+           | Factor;
+
+    Factor ::= number
+             | lbrace Exp rbrace;
+  </bnf>
+
+  <import href="math-lexer.xsl"/>
+
+  <templates
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:mml="http://www.w3.org/1998/MathML">
+
+    <xsl:output method="xml" indent="yes" encoding="UTF-8"/>
+
+    <xsl:template match="text()"/>
+
+    <xsl:template match="m">
+      <xsl:variable name="parsed">
+        <xsl:call-template name="p:Start">
+          <xsl:with-param name="in" select="."/>
+        </xsl:call-template>
+      </xsl:variable>
+
+      <xsl:variable name="grammar">
+        <xsl:apply-templates select="exsl:node-set($parsed)/term" mode="rewrite"/>
+      </xsl:variable>
+
+      <xsl:apply-templates select="exsl:node-set($grammar)" mode="generate"/>
+    </xsl:template>
+
+    <xsl:template match="term[*]" mode="rewrite">
+      <xsl:element name="{@name}">
+        <xsl:apply-templates mode="rewrite"/>
+      </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="term" mode="rewrite">
+      <xsl:element name="{@name}">
+        <xsl:value-of select="."/>
+      </xsl:element>
+    </xsl:template>
+
+    <xsl:template name="apply">
+      <xsl:param name="first-argument" select=".."/>
+      <mml:apply>
+        <xsl:element name="{concat('mml:', local-name(*[1]))}"/>
+        <xsl:apply-templates select="$first-argument" mode="generate-apply"/>
+        <xsl:apply-templates select="*[2]" mode="generate-apply"/>
+      </mml:apply>
+    </xsl:template>
+
+    <xsl:template match="text()" mode="generate-apply"/>
+
+    <xsl:template match="number" mode="generate-apply">
+      <mml:cn>
+        <xsl:value-of select="."/>
+      </mml:cn>
+    </xsl:template>
+
+    <xsl:template match="text()" mode="generate"/>
+
+    <xsl:template match="Start" mode="generate">
+      <mml:math>
+        <xsl:apply-templates mode="generate"/>
+      </mml:math>
+    </xsl:template>
+
+    <xsl:template match="Exp-rest/Exp-rest[count(*) = 0]" mode="generate">
+      <xsl:apply-templates select=".." mode="generate-apply"/>
+    </xsl:template>
+
+    <xsl:template match="Exp-rest/Exp-rest" mode="generate-apply">
+      <xsl:call-template name="apply"/>
+    </xsl:template>
+
+    <xsl:template match="Exp/Exp-rest" mode="generate-apply">
+      <xsl:call-template name="apply">
+        <xsl:with-param name="first-argument" select="../*[1]"/>
+      </xsl:call-template>
+    </xsl:template>
+
+    <xsl:template match="Exp/Exp-rest[count(*) = 0]" mode="generate">
+      <xsl:apply-templates select="../*[1]" mode="generate-apply"/>
+    </xsl:template>
+  </templates>
+</grammar>

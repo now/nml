@@ -1,0 +1,19 @@
+include 'common.rnc'
+include 'ebnf.rnc'
+include 'flow.rnc'
+include 'meta.rnc'
+include 'names.rnc'
+include 'phrasing.rnc'
+include 'tables.rnc'
+
+start =
+  nml |
+  section |
+  p
+
+nml = element nml { nml.attributes, nml.content }
+nml.attributes = common.attributes
+nml.content =
+  title,
+  subtitle?,
+  common.flow.content

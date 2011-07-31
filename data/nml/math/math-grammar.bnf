@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar>
+  <terminal name="end">
+    <end/>
+  </terminal>
+
+  <ignore char=" "/>
+
+  <bnf>
+    plus ::= '+';
+    minus ::= '-';
+    times ::= '*';
+    div ::= '/';
+    lbrace ::= '(';
+    rbrace ::= ')';
+    number ::= [.0123456789];
+    
+    Start ::= Exp end;
+
+    Exp ::= Exp plus Term
+          | Exp minus Term
+          | Term;
+
+    Term ::= Term times Factor
+           | Term div Factor
+           | Factor;
+
+    Factor ::= number
+             | lbrace Exp rbrace;
+  </bnf>
+
+  <import href="math-lexer.xsl"/>
+
+  <templates
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:mml="http://www.w3.org/1998/MathML">
+
+    <xsl:output method="xml" indent="yes" encoding="UTF-8"/>
+
+    <xsl:template match="text()"/>
+
+    <xsl:template match="math">
+      <xsl:variable name="parsed">
+        <xsl:call-template name="p:Start">
+          <xsl:with-param name="in" select="."/>
+        </xsl:call-template>
+      </xsl:variable>
+
+      <xsl:choose>
+        <xsl:when test="true()">
+          <xsl:variable name="grammar">
+            <xsl:apply-templates select="exsl:node-set($parsed)/term" mode="rewrite"/>
+          </xsl:variable>
+
+          <xsl:apply-templates select="exsl:node-set($grammar)" mode="associate-exp"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates select="exsl:node-set($parsed)/term" mode="rewrite"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:template>
+
+    <xsl:template match="term[*]" mode="rewrite">
+      <xsl:element name="{@name}">
+        <xsl:apply-templates mode="rewrite"/>
+      </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="term" mode="rewrite">
+      <xsl:element name="{@name}">
+        <xsl:value-of select="."/>
+      </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="text()" mode="associate-exp"/>
+    <xsl:template match="text()" mode="associate-exp-up"/>
+    <xsl:template match="text()" mode="associate-term-up"/>
+
+    <!-- TODO: Need to make sure that these only get applied to the subtree
+    we’re working with.  That is, we only deal with the Exp right under the context node. -->
+    <xsl:template name="find-innermost-term-rest">
+      <xsl:param name="node"/>
+      <xsl:param name="stop" select="$node"/>
+      <xsl:choose>
+        <xsl:when test="$node/Term-rest[count(*) = 0]">
+          <xsl:apply-templates select="$node/*[1]" mode="associate-term-up"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:call-template name="find-innermost-term-rest">
+            <xsl:with-param name="node" select="$node/Term-rest"/>
+            <xsl:with-param name="stop" select="$stop"/>
+          </xsl:call-template>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:template>
+
+    <xsl:template name="find-innermost-exp-rest">
+      <xsl:param name="node"/>
+      <xsl:choose>
+        <xsl:when test="$node/Exp-rest[count(*) = 0]">
+          <xsl:apply-templates select="$node/*[1]" mode="associate-exp-up"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:call-template name="find-innermost-exp-rest">
+            <xsl:with-param name="node" select="$node/Exp-rest"/>
+          </xsl:call-template>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:template>
+
+    <xsl:template match="/Start/Exp" mode="associate-exp">
+      <xsl:call-template name="find-innermost-exp-rest">
+        <xsl:with-param name="node" select="."/>
+      </xsl:call-template>
+    </xsl:template>
+
+    <xsl:template match="plus|minus" mode="associate-exp-up">
+      <mml:apply>
+        <xsl:element name="{concat('mml:', local-name(.))}"/>
+        <xsl:apply-templates select="../../*[1]" mode="associate-exp-up"/>
+        <xsl:apply-templates select="../*[2]" mode="associate-exp-up"/>
+      </mml:apply>
+    </xsl:template>
+
+    <xsl:template match="Term" mode="associate-exp-up">
+      <xsl:call-template name="find-innermost-term-rest">
+        <xsl:with-param name="node" select="."/>
+      </xsl:call-template>
+    </xsl:template>
+
+    <xsl:template match="times|div" mode="associate-term-up">
+      <mml:apply>
+        <xsl:element name="{concat('mml:', local-name(.))}"/>
+        <xsl:apply-templates select="../../*[1]" mode="associate-term-up"/>
+        <xsl:apply-templates select="../*[2]" mode="associate-term-up"/>
+      </mml:apply>
+    </xsl:template>
+
+    <xsl:template match="Factor/number" mode="associate-term-up">
+      <mml:cn>
+        <xsl:value-of select="."/>
+      </mml:cn>
+    </xsl:template>
+
+    <xsl:template match="Factor/Exp" mode="associate-term-up">
+      <xsl:call-template name="find-innermost-exp-rest">
+        <xsl:with-param name="node" select="."/>
+      </xsl:call-template>
+    </xsl:template>
+  </templates>
+</grammar>

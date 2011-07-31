@@ -1,0 +1,33 @@
+authors = element authors { authors.attributes, authors.content }
+authors.attributes = common.attributes
+authors.content = author+
+
+author = element author { author.attributes, author.content }
+author.attributes = common.attributes
+author.content = (honorific | firstname | surname | lineage | othername)+
+
+honorific = element honorific { honorific.attributes, honorific.content }
+honorific.attributes = common.attributes
+honorific.content = text
+
+firstname = element firstname { firstname.attributes, firstname.content }
+firstname.attributes = common.attributes
+firstname.content = text
+
+surname = element surname { surname.attributes, surname.content }
+surname.attributes = common.attributes
+surname.content = text
+
+lineage = element lineage { lineage.attributes, lineage.content }
+lineage.attributes = common.attributes
+lineage.content = text
+
+othername = element othername { othername.attributes, othername.content }
+othername.attributes = common.attributes
+othername.content = text
+
+name = element name { name.attributes, name.content }
+name.attributes = common.attributes
+name.content = (honorific | firstname | surname | lineage | othername)+
+
+common.phrasing.elements |= name

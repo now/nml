@@ -1,0 +1,7 @@
+title = element title { title.attributes, title.content }
+title.attributes = common.attributes
+title.content = common.phrasing.content
+
+subtitle = element subtitle { subtitle.attributes, subtitle.content }
+subtitle.attributes = common.attributes
+subtitle.content = common.phrasing.content
