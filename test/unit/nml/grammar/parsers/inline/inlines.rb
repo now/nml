@@ -8,4 +8,8 @@ Expectations do
   expect ['a', ' ', 'b'] do
     NML::Grammar::Parsers::Inline::InlinesParser.ast('a b')
   end
+
+  expect [NML::AST::Footnoted.new('a', NML::AST::Footnote.new('¹', 1))] do
+    NML::Grammar::Parsers::Inline::InlinesParser.ast('a¹')
+  end
 end

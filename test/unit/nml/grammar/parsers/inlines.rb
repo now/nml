@@ -44,4 +44,9 @@ Expectations do
   expect ['a', ' ', NML::AST::Emphasis.new('b', ' ', NML::AST::Group.new('c'), ' ', 'd'), ' ', 'e'] do
     NML::Grammar::Parsers::InlinesParser.ast('a /b {c} d/ e')
   end
+
+  expect [NML::AST::Footnoted.new(NML::AST::Group.new('a', ' ', 'b', ' ', 'c'),
+                                  NML::AST::Footnote.new('¹', 7))] do
+    NML::Grammar::Parsers::InlinesParser.ast('{a b c}¹')
+  end
 end

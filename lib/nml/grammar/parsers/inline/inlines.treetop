@@ -1,8 +1,13 @@
 module NML::Grammar::Parsers::Inline
   grammar Inlines
     rule inlines
-      first:inline rest:(inlinespace inline)*
+      first:footnoted rest:(inlinespace footnoted)*
       <NML::Grammar::Nodes::Inline::Inlines>
+    end
+
+    rule footnoted
+      inline footnotes
+      <NML::Grammar::Nodes::Inline::Footnoted>
     end
 
     rule inline
@@ -22,7 +27,8 @@ module NML::Grammar::Parsers::Inline
     rule endinline
       endcode /
       endemphasis /
-      endgroup
+      endgroup /
+      footnote
     end
 
     rule endcode
@@ -38,7 +44,18 @@ module NML::Grammar::Parsers::Inline
     end
 
     rule inlineend
-      (&[\s] / !.)
+      &[\s] /
+      &footnote /
+      !.
+    end
+
+    rule footnotes
+      (first:footnote rest:(('⁺' footnote)*))?
+    end
+
+    rule footnote
+      ('¹' / '²' / '³' / '⁴' / '⁵' / '⁶' / '⁷' / '⁸' / '⁹')
+      <NML::Grammar::Nodes::Inline::Footnote>
     end
   end
 end

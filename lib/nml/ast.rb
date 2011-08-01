@@ -6,6 +6,8 @@ module NML::AST
   autoload :Document, 'nml/ast/document'
   autoload :Emphasis, 'nml/ast/emphasis'
   autoload :Enumeration, 'nml/ast/enumeration'
+  autoload :Footnote, 'nml/ast/footnote'
+  autoload :Footnoted, 'nml/ast/footnoted'
   autoload :Group, 'nml/ast/group'
   autoload :Item, 'nml/ast/item'
   autoload :Itemization, 'nml/ast/itemization'
