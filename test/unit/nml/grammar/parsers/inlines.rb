@@ -32,4 +32,16 @@ Expectations do
   expect [NML::AST::Emphasis.new('a', ' ', NML::AST::Code.new('b/c/d'), ' ', 'e')] do
     NML::Grammar::Parsers::InlinesParser.ast('/a ‹b/c/d› e/')
   end
+
+  expect [NML::AST::Group.new('a')] do
+    NML::Grammar::Parsers::InlinesParser.ast('{a}')
+  end
+
+  expect ['a', ' ', NML::AST::Group.new('b'), ' ', 'c'] do
+    NML::Grammar::Parsers::InlinesParser.ast('a {b} c')
+  end
+
+  expect ['a', ' ', NML::AST::Emphasis.new('b', ' ', NML::AST::Group.new('c'), ' ', 'd'), ' ', 'e'] do
+    NML::Grammar::Parsers::InlinesParser.ast('a /b {c} d/ e')
+  end
 end

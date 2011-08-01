@@ -21,7 +21,8 @@ module NML::Grammar::Parsers::Inline
 
     rule endinline
       endcode /
-      endemphasis
+      endemphasis /
+      endgroup
     end
 
     rule endcode
@@ -30,6 +31,10 @@ module NML::Grammar::Parsers::Inline
 
     rule endemphasis
       '/' inlineend
+    end
+
+    rule endgroup
+      '}' inlineend
     end
 
     rule inlineend

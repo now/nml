@@ -2,6 +2,7 @@ module NML::Grammar::Parsers
   grammar Inlines
     include Inline::Code
     include Inline::Emphasis
+    include Inline::Group
     include Inline::Inlines
 
     rule inlines
@@ -11,6 +12,7 @@ module NML::Grammar::Parsers
     rule inline
       code /
       emphasis /
+      group /
       text
     end
   end

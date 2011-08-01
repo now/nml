@@ -1,0 +1,10 @@
+module NML::Grammar::Parsers::Inline
+  grammar Group
+    include Inlines
+
+    rule group
+      '{' inlines endgroup
+      <NML::Grammar::Nodes::Inline::Group>
+    end
+  end
+end

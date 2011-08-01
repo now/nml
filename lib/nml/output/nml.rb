@@ -33,6 +33,8 @@ private
       xml.enumerate{
         children xml, node
       }
+    when NML::AST::Group
+      children xml, node
     when NML::AST::Item
       xml.item{
         children xml, node

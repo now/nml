@@ -38,6 +38,8 @@ private
         block
         numbers = ['₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉', '₀']
         items(node){ numbers.shift + ' ' }
+      when NML::AST::Group
+        inline '{', node, '}'
       when NML::AST::Itemization
         block
         items(node){ '• ' }
