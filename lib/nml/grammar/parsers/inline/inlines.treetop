@@ -1,7 +1,7 @@
 module NML::Grammar::Parsers::Inline
   grammar Inlines
     rule inlines
-      inline+
+      first:inline rest:(inlinespace inline)*
       <NML::Grammar::Nodes::Inline::Inlines>
     end
 
@@ -10,7 +10,12 @@ module NML::Grammar::Parsers::Inline
     end
 
     rule text
-      (!('‹' / endinline) [^\n])+
+      (!endinline [\S])+
+      <NML::Grammar::Nodes::Inline::Text>
+    end
+
+    rule inlinespace
+      !"\n" [\s]+
       <NML::Grammar::Nodes::Inline::Text>
     end
 
@@ -20,11 +25,15 @@ module NML::Grammar::Parsers::Inline
     end
 
     rule endcode
-      '›'
+      '›' inlineend
     end
 
     rule endemphasis
-      '/'
+      '/' inlineend
+    end
+
+    rule inlineend
+      (&[\s] / !.)
     end
   end
 end
