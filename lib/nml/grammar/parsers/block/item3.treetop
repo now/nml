@@ -3,7 +3,7 @@ module NML::Grammar::Parsers::Block
     include Inlines4
 
     rule item3
-      '' first
+      first
       rest:''
       <NML::Grammar::Nodes::Block::Item>
     end

@@ -4,7 +4,7 @@ module NML::Grammar::Parsers::Block
 
     rule inlines3
       first:inlines
-      rest:(("\n      " inlines)*)
+      rest:("\n      " inlines)*
       <NML::Grammar::Nodes::Block::Inlines>
     end
   end
