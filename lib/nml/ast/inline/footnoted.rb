@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-class NML::AST::Footnoted
+class NML::AST::Inline::Footnoted
   def initialize(child, *footnotes)
     @child, @footnotes = child, footnotes
   end

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
 
-class NML::AST::Paragraph
+class NML::AST::Block::Section
   include NML::AST::Base
 end

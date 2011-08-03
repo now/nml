@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
 
-class NML::AST::Group
+class NML::AST::Inline::Emphasis
   include NML::AST::Base
 end

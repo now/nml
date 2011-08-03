@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
 
-class NML::AST::Title
+class NML::AST::Block::Document
   include NML::AST::Base
 end

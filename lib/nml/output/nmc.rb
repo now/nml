@@ -28,32 +28,32 @@ private
 
     def output(node)
       case node
-      when NML::AST::Code
+      when NML::AST::Inline::Code
         inline '‹', node, '›'
-      when NML::AST::Document
+      when NML::AST::Block::Document
         children node
-      when NML::AST::Emphasis
+      when NML::AST::Inline::Emphasis
         inline '/', node, '/'
-      when NML::AST::Enumeration
+      when NML::AST::Block::Enumeration
         block
         numbers = ['₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉', '₀']
         items(node){ numbers.shift + ' ' }
-      when NML::AST::Group
+      when NML::AST::Inline::Group
         inline '{', node, '}'
-      when NML::AST::Itemization
+      when NML::AST::Block::Itemization
         block
         items(node){ '• ' }
-      when NML::AST::Paragraph
+      when NML::AST::Block::Paragraph
         block
         @output << margin << '  '
         children node
-      when NML::AST::Section
+      when NML::AST::Block::Section
         block
         @output << margin << '§ '
         nest do
           children node
         end
-      when NML::AST::Title
+      when NML::AST::Block::Title
         children node
       when String
         @output << node

@@ -17,41 +17,41 @@ private
 
   def output(xml, node)
     case node
-    when NML::AST::Code
+    when NML::AST::Inline::Code
       xml.code{
         children xml, node
       }
-    when NML::AST::Document
+    when NML::AST::Block::Document
       xml.nml{
         children xml, node
       }
-    when NML::AST::Emphasis
+    when NML::AST::Inline::Emphasis
       xml.emphasis{
         children xml, node
       }
-    when NML::AST::Enumeration
+    when NML::AST::Block::Enumeration
       xml.enumerate{
         children xml, node
       }
-    when NML::AST::Group
+    when NML::AST::Inline::Group
       children xml, node
-    when NML::AST::Item
+    when NML::AST::Block::Item
       xml.item{
         children xml, node
       }
-    when NML::AST::Itemization
+    when NML::AST::Block::Itemization
       xml.itemize{
         children xml, node
       }
-    when NML::AST::Paragraph
+    when NML::AST::Block::Paragraph
       xml.p{
         children xml, node
       }
-    when NML::AST::Section
+    when NML::AST::Block::Section
       xml.section{
         children xml, node
       }
-    when NML::AST::Title
+    when NML::AST::Block::Title
       xml.title{
         children xml, node
       }

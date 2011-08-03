@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-class NML::AST::Footnote
+class NML::AST::Inline::Footnote
   def initialize(number, line, column)
     @number, @line, @column = number, line, column
   end
