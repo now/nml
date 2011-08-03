@@ -8,6 +8,7 @@ module NML::Grammar::Parsers::Block
     rule blocks3
       (blankline+
        block:block3)*
+      <NML::Grammar::Nodes::Block::Blocks>
     end
 
     rule block3

@@ -29,7 +29,8 @@ module NML::Grammar::Parsers::Block
 
     rule blocks
       (blankline+
-       block1)*
+       block:block1)*
+      <NML::Grammar::Nodes::Block::Blocks>
     end
 
     rule block1
