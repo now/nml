@@ -1,8 +1,0 @@
-module NML::Grammar::Parsers::Inline
-  grammar Footnoted
-    rule footnoted
-      inline footnotes
-      <NML::Grammar::Nodes::Inline::Footnoted>
-    end
-  end
-end
