@@ -41,7 +41,8 @@ module NML::Grammar::Parsers::Block
 
     rule sections
       (blankline+
-       section1)*
+       section:section1)*
+      <NML::Grammar::Nodes::Block::Sections>
     end
   end
 end

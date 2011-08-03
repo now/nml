@@ -9,5 +9,6 @@ module NML::Grammar::Nodes::Block
   autoload :Itemization, 'nml/grammar/nodes/block/itemization'
   autoload :Paragraph, 'nml/grammar/nodes/block/paragraph'
   autoload :Section, 'nml/grammar/nodes/block/section'
+  autoload :Sections, 'nml/grammar/nodes/block/sections'
   autoload :Title, 'nml/grammar/nodes/block/title'
 end

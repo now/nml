@@ -6,13 +6,18 @@ module NML::Grammar::Parsers::Block
     rule section2
       '  § ' title
       blocks:blocks3
-      sections:''
+      sections
       <NML::Grammar::Nodes::Block::Section>
     end
 
     rule title
       '' inlines:inlines2
       <NML::Grammar::Nodes::Block::Title>
+    end
+
+    rule sections
+      ''
+      <NML::Grammar::Nodes::Block::Sections>
     end
   end
 end
