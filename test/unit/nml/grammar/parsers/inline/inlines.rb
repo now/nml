@@ -9,7 +9,7 @@ Expectations do
     NML::Grammar::Parsers::Inline::InlinesParser.ast('a b')
   end
 
-  expect [NML::AST::Footnoted.new('a', NML::AST::Footnote.new('¹', 1))] do
+  expect [NML::AST::Footnoted.new('a', NML::AST::Footnote.new('¹', 1, 2))] do
     NML::Grammar::Parsers::Inline::InlinesParser.ast('a¹')
   end
 end

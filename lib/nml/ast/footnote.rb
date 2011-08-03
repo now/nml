@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 class NML::AST::Footnote
-  def initialize(number, index)
-    @number, @index = number, index
+  def initialize(number, line, column)
+    @number, @line, @column = number, line, column
   end
 
   def ==(other)
-    number == other.number and index == other.index
+    number == other.number and line == other.line and column == other.column
   end
 
   def eql?(other)
@@ -14,12 +14,12 @@ class NML::AST::Footnote
   end
 
   def hash
-    number.hash ^ index.hash
+    number.hash ^ line.hash ^ column.hash
   end
 
   def inspect
-    '%s.new(%s, %d)' % [self.class, number, index]
+    '%s.new(%s, %d, %d)' % [self.class, number, line, column]
   end
 
-  attr_reader :number, :index
+  attr_reader :number, :line, :column
 end

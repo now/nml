@@ -46,7 +46,7 @@ Expectations do
   end
 
   expect [NML::AST::Footnoted.new(NML::AST::Group.new('a', ' ', 'b', ' ', 'c'),
-                                  NML::AST::Footnote.new('¹', 7))] do
+                                  NML::AST::Footnote.new('¹', 1, 8))] do
     NML::Grammar::Parsers::InlinesParser.ast('{a b c}¹')
   end
 end
