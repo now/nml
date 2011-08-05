@@ -2,13 +2,21 @@ module NML::Grammar::Parsers::Block
   grammar Blocks3
     include Common
     include Enumeration3
+    include Footnotes3
     include Itemization3
     include Paragraph3
 
     rule blocks3
       (blankline+
-       block:block3)*
+       block:footnoted3)*
       <NML::Grammar::Nodes::Block::Blocks>
+    end
+
+    rule footnoted3
+      block:block3
+      footnotes:(blankline+
+                 footnotes:footnotes3)?
+      <NML::Grammar::Nodes::Block::Footnoted>
     end
 
     rule block3

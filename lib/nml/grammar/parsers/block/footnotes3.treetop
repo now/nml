@@ -1,9 +1,9 @@
 module NML::Grammar::Parsers::Block
-  grammar Footnotes1
+  grammar Footnotes3
     include Footnote
 
-    rule footnotes1
-      ('' blockfootnote)+
+    rule footnotes3
+      ('    ' blockfootnote)+
       <NML::Grammar::Nodes::Block::Footnotes>
     end
   end

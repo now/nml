@@ -8,17 +8,19 @@ module NML::Grammar::Parsers::Block
   require 'nml/grammar/parsers/block/inlines4'
 
   require 'nml/grammar/parsers/block/inlines3'
-  require 'nml/grammar/parsers/block/paragraph3'
   require 'nml/grammar/parsers/block/item3'
   require 'nml/grammar/parsers/block/enumeration3'
+  require 'nml/grammar/parsers/block/footnotes3'
   require 'nml/grammar/parsers/block/itemization3'
+  require 'nml/grammar/parsers/block/paragraph3'
 
   require 'nml/grammar/parsers/block/blocks3'
   require 'nml/grammar/parsers/block/inlines2'
-  require 'nml/grammar/parsers/block/paragraph2'
   require 'nml/grammar/parsers/block/item2'
   require 'nml/grammar/parsers/block/enumeration2'
+  require 'nml/grammar/parsers/block/footnotes2'
   require 'nml/grammar/parsers/block/itemization2'
+  require 'nml/grammar/parsers/block/paragraph2'
 
   require 'nml/grammar/parsers/block/blocks2'
   require 'nml/grammar/parsers/block/inlines1'

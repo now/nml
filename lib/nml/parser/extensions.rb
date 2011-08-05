@@ -6,9 +6,9 @@ module NML::Parser::Extensions
     tree = parser.parse(string) or
       raise NML::Parser::Error.new('expected %s' %
                                    (parser.terminal_failures.count == 1 ?
-                                      parser.terminal_failures.first.expected_string.inspect :
+                                      parser.terminal_failures.first.expected_string :
                                       'one of %s' % [parser.terminal_failures.
-                                                     map{ |f| f.expected_string.inspect }.
+                                                     map{ |f| f.expected_string }.
                                                      uniq.
                                                      join(', ')]),
                                    parser.failure_line,
