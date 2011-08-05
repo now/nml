@@ -1,0 +1,12 @@
+module NML::Grammar::Parsers::Block
+  grammar FootnoteDefinition
+    rule footnotedefinition
+      link
+    end
+
+    rule link
+      title:(!(' at ' [\S]+) .)+ ' at ' uri:[\S]+
+      <NML::Grammar::Nodes::Block::Footnote::Link>
+    end
+  end
+end

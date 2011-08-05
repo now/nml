@@ -18,7 +18,7 @@ class NML::AST::Inline::Footnote
   end
 
   def inspect
-    '%s.new(%s, %d, %d)' % [self.class, number, line, column]
+    '%s.new(%p, %d, %d)' % [self.class, number, line, column]
   end
 
   attr_reader :number, :line, :column

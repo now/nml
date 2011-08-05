@@ -2,6 +2,7 @@ module NML::Grammar::Parsers::Block
   grammar Document
     include Common
     include Enumeration1
+    include Footnotes1
     include Inlines1
     include Itemization1
     include Paragraph1
@@ -29,8 +30,15 @@ module NML::Grammar::Parsers::Block
 
     rule blocks
       (blankline+
-       block:block1)*
+       block:footnoted1)*
       <NML::Grammar::Nodes::Block::Blocks>
+    end
+
+    rule footnoted1
+      block:block1
+      footnotes:(blankline+
+                 footnotes:footnotes1)?
+      <NML::Grammar::Nodes::Block::Footnoted>
     end
 
     rule block1
@@ -46,25 +54,3 @@ module NML::Grammar::Parsers::Block
     end
   end
 end
-
-#grammar Test
-#  rule link
-#    title link_definition
-#  end
-#
-#  rule link_definition
-#    at uri
-#  end
-#
-#  rule title
-#    (!link_definition .)+
-#  end
-#
-#  rule at
-#    ' at '
-#  end
-#
-#  rule uri
-#    (!at .)* !.
-#  end
-#end
