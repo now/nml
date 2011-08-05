@@ -3,12 +3,15 @@
 class NML::AST::Block::Footnote
   autoload :Link, 'nml/ast/block/footnote/link'
 
-  def initialize(number, child)
-    @number, @child = number, child
+  def initialize(number, line, column, child)
+    @number, @line, @column, @child = number, line, column, child
   end
 
   def ==(other)
-    number == other.number and child == other.child
+    number == other.number and
+      line == other.line and
+      column == other.column and
+      child == other.child
   end
 
   def eql?(other)
@@ -16,12 +19,15 @@ class NML::AST::Block::Footnote
   end
 
   def hash
-    number.hash ^ child.hash
+    number.hash ^
+      line.hash ^
+      column.hash ^
+      child.hash
   end
 
   def inspect
-    '%s.new(%p, %p)' % [self.class, number, child]
+    '%s.new(%p, %p, %p, %p)' % [self.class, number, line, column, child]
   end
 
-  attr_reader :number, :child
+  attr_reader :number, :line, :column, :child
 end

@@ -2,18 +2,18 @@
 
 Expectations do
   expect [NML::AST::Block::Footnote.
-            new('¹',
+            new('¹', 1, 1,
                 NML::AST::Block::Footnote::Link.
                   new('Email me', 'mailto:example@example.com'))] do
     NML::Grammar::Parsers::Block::Footnotes1Parser.ast('¹ Email me at mailto:example@example.com')
   end
 
   expect [NML::AST::Block::Footnote.
-            new('¹',
+            new('¹', 1, 1,
                NML::AST::Block::Footnote::Link.
                  new('Email me', 'mailto:example@example.com')),
           NML::AST::Block::Footnote.
-            new('²',
+            new('²', 2, 1,
                 NML::AST::Block::Footnote::Link.
                   new('Visit me', 'http://example.com')),
         ] do

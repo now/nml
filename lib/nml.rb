@@ -6,6 +6,8 @@ module NML
   autoload :AST, 'nml/ast'
   autoload :Grammar, 'nml/grammar'
   autoload :Output, 'nml/output'
+  autoload :Validation, 'nml/validation'
+
   require 'nml/parser'
 
   def self.parse(string)

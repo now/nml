@@ -48,7 +48,7 @@ Expectations do
                              new('Line12',
                                  NML::AST::Inline::Footnote.new('¹', 4, 13))),
                      NML::AST::Block::Footnote.
-                       new('¹',
+                       new('¹', 6, 5,
                            NML::AST::Block::Footnote::Link.
                              new('Email me', 'mailto:example@example.com')))) do
     NML::Grammar::Parsers::Block::Section2Parser.ast("  § Title\n\n      Line11\n      Line12¹\n\n    ¹ Email me at mailto:example@example.com")
