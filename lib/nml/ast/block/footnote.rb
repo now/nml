@@ -3,12 +3,12 @@
 class NML::AST::Block::Footnote
   autoload :Link, 'nml/ast/block/footnote/link'
 
-  def initialize(number, line, column, child)
-    @number, @line, @column, @child = number, line, column, child
+  def initialize(identifier, line, column, child)
+    @identifier, @line, @column, @child = identifier, line, column, child
   end
 
   def ==(other)
-    number == other.number and
+    identifier == other.identifier and
       line == other.line and
       column == other.column and
       child == other.child
@@ -19,15 +19,15 @@ class NML::AST::Block::Footnote
   end
 
   def hash
-    number.hash ^
+    identifier.hash ^
       line.hash ^
       column.hash ^
       child.hash
   end
 
   def inspect
-    '%s.new(%p, %p, %p, %p)' % [self.class, number, line, column, child]
+    '%s.new(%p, %p, %p, %p)' % [self.class, identifier, line, column, child]
   end
 
-  attr_reader :number, :line, :column, :child
+  attr_reader :identifier, :line, :column, :child
 end

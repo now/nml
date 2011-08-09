@@ -32,9 +32,9 @@ private
       end
     when NML::AST::Inline::Footnote
       raise NML::Validation::Error.
-              new('footnote not defined: %s' % node.number,
+              new('footnote not defined: %s' % node.identifier,
                   node.line,
-                  node.column) unless @environment.defined? node.number
+                  node.column) unless @environment.defined? node.identifier
     when String
     when Enumerable
       node.each do |child|
@@ -58,8 +58,8 @@ private
       @frames.pop.validate
     end
 
-    def defined?(number)
-      @frames.reverse.any?{ |frame| frame.defined?(number) }
+    def defined?(identifier)
+      @frames.reverse.any?{ |frame| frame.defined? identifier }
     end
 
   private
@@ -70,16 +70,16 @@ private
         @referenced = []
       end
 
-      def defined?(number)
-        return false unless @footnotes.any?{ |footnote| footnote.number == number }
-        @referenced << number
+      def defined?(identifier)
+        return false unless @footnotes.any?{ |footnote| footnote.identifier == identifier }
+        @referenced << identifier
         true
       end
 
       def validate
-        unreferenced = @footnotes.map{ |footnote| footnote.number } - @referenced
+        unreferenced = @footnotes.map{ |footnote| footnote.identifier } - @referenced
         return if unreferenced.empty?
-        first = @footnotes.find{ |footnote| unreferenced.include? footnote.number }
+        first = @footnotes.find{ |footnote| unreferenced.include? footnote.identifier }
         raise NML::Validation::Error.
                 new('footnote not referenced: %s' % unreferenced.join(', '),
                     first.line,

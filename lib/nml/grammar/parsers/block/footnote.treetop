@@ -5,7 +5,7 @@ module NML::Grammar::Parsers::Block
     # TODO: We would like to use [¹²³⁴⁵⁶⁷⁸⁹], but until we provide Treetop with
     # a Unicode-enabled string, this won’t work.
     rule blockfootnote
-      number:('¹' / '²' / '³' / '⁴' / '⁵' / '⁶' / '⁷' / '⁸' / '⁹') ' ' footnotedefinition ("\n" / !.)
+      identifier:('¹' / '²' / '³' / '⁴' / '⁵' / '⁶' / '⁷' / '⁸' / '⁹') ' ' footnotedefinition ("\n" / !.)
       <NML::Grammar::Nodes::Block::Footnote>
     end
   end
