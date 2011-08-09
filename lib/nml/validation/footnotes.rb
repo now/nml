@@ -1,6 +1,12 @@
 # -*- coding: utf-8 -*-
 
 class NML::Validation::Footnotes
+  class << self
+    def call(ast)
+      new(ast).call
+    end
+  end
+
   def initialize(ast)
     @ast = ast
     @environment = Environment.new
