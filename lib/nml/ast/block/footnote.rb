@@ -1,17 +1,24 @@
 # -*- coding: utf-8 -*-
 
 class NML::AST::Block::Footnote
+  include NML::AST::Base
+
   autoload :Link, 'nml/ast/block/footnote/link'
 
   def initialize(identifier, line, column, child)
-    @identifier, @line, @column, @child = identifier, line, column, child
+    @identifier, @line, @column = identifier, line, column
+    super child
+  end
+
+  def copy(child)
+    super identifier, line, column, child
   end
 
   def ==(other)
-    identifier == other.identifier and
+    super and
+      identifier == other.identifier and
       line == other.line and
-      column == other.column and
-      child == other.child
+      column == other.column
   end
 
   def eql?(other)
@@ -19,15 +26,12 @@ class NML::AST::Block::Footnote
   end
 
   def hash
-    identifier.hash ^
-      line.hash ^
-      column.hash ^
-      child.hash
+    super ^ identifier.hash ^ line.hash ^ column.hash
   end
 
   def inspect
-    '%s.new(%p, %p, %p, %p)' % [self.class, identifier, line, column, child]
+    '%s.new(%p, %d, %d, %s)' % [self.class, identifier, line, column, children.map{ |c| c.inspect }.join(', ')]
   end
 
-  attr_reader :identifier, :line, :column, :child
+  attr_reader :identifier, :line, :column
 end

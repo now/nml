@@ -24,7 +24,7 @@ class NML::AST::Inline::Footnote
   end
 
   def inspect
-    '%s.new(%p, %d, %d, %p)' % [self.class, identifier, line, column, child]
+    '%s.new(%p, %d, %d, %s)' % [self.class, identifier, line, column, children.map{ |c| c.inspect }.join(', ')]
   end
 
   attr_reader :identifier, :line, :column

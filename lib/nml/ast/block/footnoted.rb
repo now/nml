@@ -1,27 +1,17 @@
 # -*- coding: utf-8 -*-
 
 class NML::AST::Block::Footnoted
-  # TODO: Footnotes is its own Block class and should implement much of what’s
-  # being done in validation.
-  def initialize(child, *footnotes)
-    @child, @footnotes = child, footnotes
+  include NML::AST::Base
+
+  def initialize(child, footnotes)
+    super child, footnotes
   end
 
-  def ==(other)
-    child == other.child and footnotes == other.footnotes
+  def child
+    children[0]
   end
 
-  def eql?(other)
-    self.class == other.class and self == other
+  def footnotes
+    children[1]
   end
-
-  def hash
-    child.hash ^ footnotes.hash
-  end
-
-  def inspect
-    '%s.new(%p, %s)' % [self.class, child, footnotes.map{ |e| e.inspect }.join(', ')]
-  end
-
-  attr_reader :child, :footnotes
 end

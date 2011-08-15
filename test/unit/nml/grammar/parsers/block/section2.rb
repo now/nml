@@ -45,10 +45,11 @@ Expectations do
                  new(NML::AST::Block::Paragraph.
                        new('Line11 ',
                            NML::AST::Inline::Footnote.new('¹', 4, 13, 'Line12')),
-                     NML::AST::Block::Footnote.
-                       new('¹', 6, 5,
-                           NML::AST::Block::Footnote::Link.
-                             new('Email me', 'mailto:example@example.com')))) do
+                     NML::AST::Block::Footnotes.
+                       new(NML::AST::Block::Footnote.
+                             new('¹', 6, 5,
+                                 NML::AST::Block::Footnote::Link.
+                                   new('Email me', 'mailto:example@example.com'))))) do
     NML::Grammar::Parsers::Block::Section2Parser.ast("  § Title\n\n      Line11\n      Line12¹\n\n    ¹ Email me at mailto:example@example.com")
   end
 end
