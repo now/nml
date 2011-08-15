@@ -8,7 +8,7 @@ module NML::AST::Base
   end
 
   def copy(*children)
-    children.eql?(@children) ? self : self.class.new(*children)
+    children == @children ? self : self.class.new(*children)
   end
 
   def each
@@ -19,12 +19,10 @@ module NML::AST::Base
   end
 
   def ==(other)
-    children == other.children
+    self.class == other.class and children == other.children
   end
 
-  def eql?(other)
-    self.class == other.class and self == other
-  end
+  alias eql? ==
 
   def hash
     children.hash

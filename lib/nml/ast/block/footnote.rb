@@ -21,10 +21,6 @@ class NML::AST::Block::Footnote
       column == other.column
   end
 
-  def eql?(other)
-    self.class == other.class and self == other
-  end
-
   def hash
     super ^ identifier.hash ^ line.hash ^ column.hash
   end

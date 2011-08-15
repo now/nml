@@ -6,12 +6,10 @@ class NML::AST::Block::Footnote::Link
   end
 
   def ==(other)
-    title == other.title and uri == other.uri
+    self.class == other.class and title == other.title and uri == other.uri
   end
 
-  def eql?(other)
-    self.class == other.class and self == other
-  end
+  alias eql? ==
 
   def hash
     title.hash ^ uri.hash
