@@ -52,9 +52,7 @@ Expectations do
                NML::AST::Block::Footnoted.
                  new(NML::AST::Block::Paragraph.
                        new('Line11 ',
-                           NML::AST::Inline::Footnoted.
-                             new('Line12',
-                                 NML::AST::Inline::Footnote.new('¹', 4, 11))),
+                           NML::AST::Inline::Footnote.new('¹', 4, 11, 'Line12')),
                      NML::AST::Block::Footnote.
                        new('¹', 6, 3,
                            NML::AST::Block::Footnote::Link.

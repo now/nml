@@ -7,10 +7,15 @@ module NML::AST::Base
     @children = children
   end
 
+  def copy(*children)
+    children == @children ? self : self.class.new(*children)
+  end
+
   def each
     children.each do |child|
       yield child
     end
+    self
   end
 
   def ==(other)

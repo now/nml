@@ -1,7 +1,14 @@
 # -*- coding: utf-8 -*-
 
 module NML::Grammar::Nodes::Inline::Footnotes
-  def to_ast
-    ([first] + rest.elements.map{ |e| e.footnote }).map{ |e| e.to_ast }
+  include Enumerable
+
+  def each
+    return self if empty?
+    yield footnote
+    rest.elements.each do |e|
+      yield e.footnote
+    end
+    self
   end
 end

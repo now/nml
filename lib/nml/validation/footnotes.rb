@@ -25,11 +25,6 @@ private
       @environment.nest node.footnotes do
         validate node.child
       end
-    when NML::AST::Inline::Footnoted
-      validate node.child
-      node.footnotes.each do |footnote|
-        validate footnote
-      end
     when NML::AST::Inline::Footnote
       raise NML::Validation::Error.
               new('footnote not defined: %s' % node.identifier,

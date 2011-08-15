@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 class NML::AST::Block::Footnoted
+  # TODO: Footnotes is its own Block class and should implement much of what’s
+  # being done in validation.
   def initialize(child, *footnotes)
     @child, @footnotes = child, footnotes
   end

@@ -50,7 +50,7 @@ module NML::Grammar::Parsers::Inline
     end
 
     rule footnotes
-      (first:footnote rest:('⁺' footnote)* / '')
+      (footnote rest:('⁺' footnote)* / '')
       <NML::Grammar::Nodes::Inline::Footnotes>
     end
 
