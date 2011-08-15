@@ -8,7 +8,7 @@ module NML::AST::Base
   end
 
   def copy(*children)
-    children == @children ? self : self.class.new(*children)
+    children.eql?(@children) ? self : self.class.new(*children)
   end
 
   def each

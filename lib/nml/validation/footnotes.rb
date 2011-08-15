@@ -40,8 +40,6 @@ private
     end
   end
 
-private
-
   class Environment
     def initialize
       @frames = []
@@ -49,8 +47,11 @@ private
 
     def nest(footnotes)
       @frames.push Frame.new(footnotes)
-      yield
-      @frames.pop.validate
+      begin
+        yield
+      ensure
+        @frames.pop.validate
+      end
     end
 
     def defined?(identifier)
@@ -58,7 +59,7 @@ private
     end
 
   private
-
+  
     class Frame
       def initialize(footnotes)
         @footnotes = footnotes
@@ -66,15 +67,15 @@ private
       end
 
       def defined?(identifier)
-        return false unless @footnotes.any?{ |footnote| footnote.identifier == identifier }
+        return false unless @footnotes.defined? identifier
         @referenced << identifier
         true
       end
 
       def validate
-        unreferenced = @footnotes.map{ |footnote| footnote.identifier } - @referenced
+        unreferenced = @footnotes.identifiers - @referenced
         return if unreferenced.empty?
-        first = @footnotes.find{ |footnote| unreferenced.include? footnote.identifier }
+        first = @footnotes[unreferenced.first]
         raise NML::Validation::Error.
                 new('footnote not referenced: %s' % unreferenced.join(', '),
                     first.line,

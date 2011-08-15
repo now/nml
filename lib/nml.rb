@@ -5,6 +5,7 @@ require 'treetop'
 module NML
   autoload :AST, 'nml/ast'
   autoload :Grammar, 'nml/grammar'
+  autoload :Normalization, 'nml/normalization'
   autoload :Output, 'nml/output'
   autoload :Validation, 'nml/validation'
 
