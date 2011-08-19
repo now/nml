@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 
-class NML::AST::Block::Footnotes
-  include NML::AST::Base
-
+class NML::AST::Block::Footnotes < NML::AST::Node
   def [](identifier)
     find{ |footnote| footnote.identifier == identifier }
   end

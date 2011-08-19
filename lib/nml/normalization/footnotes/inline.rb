@@ -25,16 +25,15 @@ private
         inline node.child
       }
     when NML::AST::Inline::Footnote
-      footnote = @environment[node.identifier]
-      case footnote.first
+      case definition = @environment[node.identifier].definition
       when NML::AST::Block::Footnote::Link
-        NML::AST::Inline::Link.new(footnote.first.title, footnote.first.uri, *node)
+        NML::AST::Inline::Link.new(*(definition.to_a + node.to_a))
       else
         raise TypeError, 'unknown node type: %p' % [node]
       end
     when String
       node
-    when Enumerable
+    when NML::AST::Node
       node.copy(*node.map{ |child| inline child })
     else
       raise TypeError, 'unknown node type: %p' % [node]

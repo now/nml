@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
 
-class NML::AST::Block::Paragraph
-  include NML::AST::Base
+class NML::AST::Block::Paragraph < NML::AST::Node
 end

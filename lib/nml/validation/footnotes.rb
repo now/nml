@@ -27,11 +27,11 @@ private
       end
     when NML::AST::Inline::Footnote
       raise NML::Validation::Error.
-              new('footnote not defined: %s' % node.identifier,
-                  node.line,
-                  node.column) unless @environment.defined? node.identifier
+        new('footnote not defined: %s' % node.identifier,
+            node.line,
+            node.column) unless @environment.defined? node.identifier
     when String
-    when Enumerable
+    when NML::AST::Node
       node.each do |child|
         validate child
       end

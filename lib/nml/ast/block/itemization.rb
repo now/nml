@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
 
-class NML::AST::Block::Itemization
-  include NML::AST::Base
+class NML::AST::Block::Itemization < NML::AST::Node
 end
