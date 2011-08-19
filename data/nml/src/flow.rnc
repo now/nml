@@ -58,18 +58,18 @@ definition = element definition { definition.attributes, definitions.content }
 definition.attributes = common.attributes
 definition.content = common.flow.content
 
-itemize = element itemize { itemize.attributes, itemize.content }
-itemize.attributes = common.attributes
-itemize.content = item+
+itemization = element itemization { itemization.attributes, itemization.content }
+itemization.attributes = common.attributes
+itemization.content = item+
 
-common.flow.elements |= itemize
+common.flow.elements |= itemization
 
 item = element item { item.attributes, item.content }
 item.attributes = common.attributes
 item.content = common.flow.content
 
-enumerate = element enumerate { enumerate.attributes, enumerate.content }
-enumerate.attributes = common.attributes
-enumerate.content = item+
+enumeration = element enumeration { enumeration.attributes, enumeration.content }
+enumeration.attributes = common.attributes
+enumeration.content = item+
 
-common.flow.elements |= enumerate
+common.flow.elements |= enumeration
