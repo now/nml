@@ -6,6 +6,7 @@ module NML::Grammar::Parsers::Block
     include Footnotes2
     include Itemization2
     include Paragraph2
+    include Table2
 
     rule blocks2
       (blankline+
@@ -24,7 +25,8 @@ module NML::Grammar::Parsers::Block
       code2 /
       enumeration2 /
       itemization2 /
-      paragraph2
+      paragraph2 /
+      table2
     end
   end
 end

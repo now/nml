@@ -1,0 +1,15 @@
+module NML::Grammar::Parsers::Block
+  grammar Row
+    include NML::Grammar::Parsers::Inlines
+
+    rule row
+      '| ' first:cell rest:(' | ' cell)* ' |'
+      <NML::Grammar::Nodes::Block::Table::Row>
+    end
+
+    rule cell
+      '' inlines
+      <NML::Grammar::Nodes::Block::Table::Cell>
+    end
+  end
+end

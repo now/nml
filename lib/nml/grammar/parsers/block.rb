@@ -4,6 +4,7 @@ module NML::Grammar::Parsers::Block
   require 'nml/grammar/parsers/block/common'
   require 'nml/grammar/parsers/block/footnotedefinition'
   require 'nml/grammar/parsers/block/footnote'
+  require 'nml/grammar/parsers/block/row'
 
   require 'nml/grammar/parsers/block/inlines4'
 
@@ -14,6 +15,7 @@ module NML::Grammar::Parsers::Block
   require 'nml/grammar/parsers/block/footnotes3'
   require 'nml/grammar/parsers/block/itemization3'
   require 'nml/grammar/parsers/block/paragraph3'
+  require 'nml/grammar/parsers/block/table3'
 
   require 'nml/grammar/parsers/block/blocks3'
   require 'nml/grammar/parsers/block/inlines2'
@@ -23,6 +25,7 @@ module NML::Grammar::Parsers::Block
   require 'nml/grammar/parsers/block/footnotes2'
   require 'nml/grammar/parsers/block/itemization2'
   require 'nml/grammar/parsers/block/paragraph2'
+  require 'nml/grammar/parsers/block/table2'
 
   require 'nml/grammar/parsers/block/blocks2'
   require 'nml/grammar/parsers/block/inlines1'
