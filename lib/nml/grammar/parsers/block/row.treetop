@@ -3,7 +3,7 @@ module NML::Grammar::Parsers::Block
     include NML::Grammar::Parsers::Inlines
 
     rule row
-      '| ' first:cell rest:(' | ' cell)* ' |'
+      '| ' first:cell rest:(' | ' cell)* ' |' ("\n" / !.)
       <NML::Grammar::Nodes::Block::Table::Row>
     end
 

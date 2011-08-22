@@ -9,12 +9,12 @@ module NML::Grammar::Parsers::Block
     end
 
     rule head
-      '  ' row "\n"
+      '  ' row
       <NML::Grammar::Nodes::Block::Table::Head>
     end
 
     rule body
-      ('  ' row ("\n" / !.))+
+      ('  ' row)+
       <NML::Grammar::Nodes::Block::Table::Body>
     end
   end
