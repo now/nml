@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 module NML::AST::Block
+  autoload :Code, 'nml/ast/block/code'
   autoload :Document, 'nml/ast/block/document'
   autoload :Enumeration, 'nml/ast/block/enumeration'
   autoload :Footnote, 'nml/ast/block/footnote'

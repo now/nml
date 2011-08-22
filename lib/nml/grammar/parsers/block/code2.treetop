@@ -1,0 +1,9 @@
+module NML::Grammar::Parsers::Block
+  grammar Code2
+    rule code2
+      '      ' first:[^\n]*
+      rest:("\n      " line:[^\n]*)*
+      <NML::Grammar::Nodes::Block::Code>
+    end
+  end
+end

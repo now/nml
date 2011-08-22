@@ -66,4 +66,10 @@ Expectations do
                                    new('Email me', 'mailto:example@example.com'))))) do
     NML::Grammar::Parsers::Block::DocumentParser.ast("Title\n\n  Line11\n  Line12¹\n\n¹ Email me at mailto:example@example.com")
   end
+
+  expect NML::AST::Block::Document.
+           new(NML::AST::Block::Title.new('Title'),
+               NML::AST::Block::Code.new("def id(a)\n  a\nend")) do
+    NML::Grammar::Parsers::Block::DocumentParser.ast("Title\n\n    def id(a)\n      a\n    end")
+  end
 end

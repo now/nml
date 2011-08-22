@@ -1,6 +1,7 @@
 module NML::Grammar::Parsers::Block
   grammar Blocks2
     include Common
+    include Code2
     include Enumeration2
     include Footnotes2
     include Itemization2
@@ -20,6 +21,7 @@ module NML::Grammar::Parsers::Block
     end
 
     rule block2
+      code2 /
       enumeration2 /
       itemization2 /
       paragraph2

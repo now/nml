@@ -2,6 +2,7 @@
 
 module NML::Grammar::Nodes::Block
   autoload :Blocks, 'nml/grammar/nodes/block/blocks'
+  autoload :Code, 'nml/grammar/nodes/block/code'
   autoload :Document, 'nml/grammar/nodes/block/document'
   autoload :Enumeration, 'nml/grammar/nodes/block/enumeration'
   autoload :Footnote, 'nml/grammar/nodes/block/footnote'
