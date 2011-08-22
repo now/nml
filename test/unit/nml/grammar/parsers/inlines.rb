@@ -59,4 +59,8 @@ Expectations do
             new('¹', 1, 8, NML::AST::Inline::Group.new('a', ' ', 'b', ' ', 'c'))] do
     NML::Grammar::Parsers::InlinesParser.ast('{a b c}¹')
   end
+
+  expect ['a|b'] do
+    NML::Grammar::Parsers::Inline::InlinesParser.ast('a|b')
+  end
 end

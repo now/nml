@@ -25,10 +25,15 @@ module NML::Grammar::Parsers::Inline
     end
 
     rule endinline
+      endcell /
       endcode /
       endemphasis /
       endgroup /
       footnote
+    end
+
+    rule endcell
+      '|' (&[\s] / !.)
     end
 
     rule endcode

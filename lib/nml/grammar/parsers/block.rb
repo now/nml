@@ -32,6 +32,7 @@ module NML::Grammar::Parsers::Block
   require 'nml/grammar/parsers/block/footnotes1'
   require 'nml/grammar/parsers/block/itemization1'
   require 'nml/grammar/parsers/block/paragraph1'
+  require 'nml/grammar/parsers/block/table1'
 
   require 'nml/grammar/parsers/block/section2'
 

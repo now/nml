@@ -8,6 +8,7 @@ module NML::Grammar::Parsers::Block
     include Itemization1
     include Paragraph1
     include Section1
+    include Table1
 
     rule document
       title
@@ -46,7 +47,8 @@ module NML::Grammar::Parsers::Block
       code1 /
       enumeration1 /
       itemization1 /
-      paragraph1
+      paragraph1 /
+      table1
     end
 
     rule sections

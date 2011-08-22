@@ -11,5 +11,6 @@ module NML::AST::Block
   autoload :Itemization, 'nml/ast/block/itemization'
   autoload :Paragraph, 'nml/ast/block/paragraph'
   autoload :Section, 'nml/ast/block/section'
+  autoload :Table, 'nml/ast/block/table'
   autoload :Title, 'nml/ast/block/title'
 end

@@ -72,4 +72,21 @@ Expectations do
                NML::AST::Block::Code.new("def id(a)\n  a\nend")) do
     NML::Grammar::Parsers::Block::DocumentParser.ast("Title\n\n    def id(a)\n      a\n    end")
   end
+
+  expect NML::AST::Block::Document.
+           new(NML::AST::Block::Title.new('Title'),
+               NML::AST::Block::Table.
+                 new(NML::AST::Block::Table::Head.
+                       new(NML::AST::Block::Table::Row.
+                             new(NML::AST::Block::Table::Cell.new('A'),
+                                 NML::AST::Block::Table::Cell.new('B'))),
+                     NML::AST::Block::Table::Body.
+                       new(NML::AST::Block::Table::Row.
+                             new(NML::AST::Block::Table::Cell.new('1'),
+                                 NML::AST::Block::Table::Cell.new('2')),
+                           NML::AST::Block::Table::Row.
+                             new(NML::AST::Block::Table::Cell.new('3'),
+                                 NML::AST::Block::Table::Cell.new('4'))))) do
+    NML::Grammar::Parsers::Block::DocumentParser.ast("Title\n\n| A | B |\n| 1 | 2 |\n| 3 | 4 |")
+  end
 end
