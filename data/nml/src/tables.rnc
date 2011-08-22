@@ -12,14 +12,14 @@ head.content = row+
 
 row = element row { row.attributes, row.content }
 row.attributes = common.attributes
-row.content = entry*
+row.content = cell*
 
-entry = element entry { entry.attributes, entry.content }
-entry.attributes =
+cell = element cell { cell.attributes, cell.content }
+cell.attributes =
   common.attributes,
   attribute columnspan { text }?,
   attribute rowspan { text }?
-entry.content = common.flow.content
+cell.content = common.flow.content
 
 body = element body { body.attributes, body.content }
 body.attributes = common.attributes
