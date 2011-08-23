@@ -52,12 +52,12 @@ common.phrasing.elements |= math
 ref = element ref { ref.attributes, ref.content }
 ref.relation.attribute = attribute relation { text }
 ref.title.attribute = attribute title { text }
-ref.to.attribute = attribute uri { xsd:anyURI }
+ref.uri.attribute = attribute uri { xsd:anyURI }
 ref.attributes =
   common.attributes,
   ref.relation.attribute?,
   ref.title.attribute?,
-  ref.to.attribute
+  ref.uri.attribute
 ref.content = common.phrasing.content
 
 common.phrasing.elements |= ref

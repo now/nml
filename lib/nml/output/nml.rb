@@ -3,6 +3,12 @@
 require 'nokogiri'
 
 class NML::Output::NML
+  class << self
+    def call(ast)
+      new(NML::Normalization::Footnotes::Inline.call(ast)).call
+    end
+  end
+
   def initialize(ast)
     @ast = ast
   end
@@ -17,46 +23,18 @@ private
 
   def output(xml, node)
     case node
-    when NML::AST::Inline::Code
-      xml.code{
-        children xml, node
-      }
-    when NML::AST::Block::Document
-      xml.nml{
-        children xml, node
-      }
-    when NML::AST::Inline::Emphasis
-      xml.emphasis{
-        children xml, node
-      }
-    when NML::AST::Block::Enumeration
-      xml.enumeration{
-        children xml, node
-      }
     when NML::AST::Inline::Group
       children xml, node
-    when NML::AST::Block::Item
-      xml.item{
-        children xml, node
-      }
-    when NML::AST::Block::Itemization
-      xml.itemization{
-        children xml, node
-      }
-    when NML::AST::Block::Paragraph
-      xml.p{
-        children xml, node
-      }
-    when NML::AST::Block::Section
-      xml.section{
-        children xml, node
-      }
-    when NML::AST::Block::Title
-      xml.title{
+    when NML::AST::Inline::Link
+      xml.ref(:title => node.title, :uri => node.uri){
         children xml, node
       }
     when String
       xml.text node
+    when NML::AST::Node
+      xml.send(name(node)){
+        children xml, node
+      }
     else
       raise TypeError, 'unknown node type: %p' % [node]
     end
@@ -66,5 +44,14 @@ private
     node.each do |child|
       output xml, child
     end
+  end
+
+  Names = {
+    NML::AST::Block::Document => 'nml',
+    NML::AST::Block::Paragraph => 'p_'
+  }
+
+  def name(node)
+    Names[node.class] ||= node.class.name.sub(/^.*::/, '').downcase
   end
 end
