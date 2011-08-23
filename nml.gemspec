@@ -15,8 +15,10 @@ Gem::Specification.new do |s|
   s.description = IO.read(File.expand_path('../README', __FILE__))
   s.summary = s.description[/^[[:alpha:]]+.*?\./]
 
+  s.executables = Dir['bin/*'].map{ |path| File.basename(path) }
   s.files = Dir['{lib,test}/**/*.rb'] + %w[README Rakefile]
 
+  s.add_runtime_dependency 'ame', '~> 0.1.0'
   s.add_runtime_dependency 'nokogiri', '~> 1.5'
 
   s.add_development_dependency 'lookout', '~> 2.0'

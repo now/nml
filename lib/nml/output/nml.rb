@@ -14,7 +14,7 @@ class NML::Output::NML
   end
 
   def call
-    Nokogiri::XML::Builder.new{ |xml|
+    Nokogiri::XML::Builder.new(:encoding => 'utf-8'){ |xml|
       output xml, @ast
     }.to_xml
   end

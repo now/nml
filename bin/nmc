@@ -1,0 +1,5 @@
+#! /usr/bin/ruby -w
+
+require 'nml'
+
+NML::CLI.process
