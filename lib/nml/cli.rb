@@ -9,11 +9,11 @@ class NML::CLI < Ame::Root
   splat :file, 'Source NMC file', :optional => true
   def nmc(files)
     if files.empty?
-      nmlize $stdin
+      nmlize nil, $stdin
     else
       files.each do |file|
         File.open(file, 'rb') do |input|
-          nmlize input
+          nmlize file, input
         end
       end
     end
@@ -21,11 +21,10 @@ class NML::CLI < Ame::Root
 
 private
 
-  def nmlize(input)
-    begin
-      $stdout.write NML::Output::NML.call(NML.ast(input.read))
-    rescue NML::Parser::Error => e
-      raise e, '%s:%s' % [file, e.message]
-    end
+  def nmlize(file, input)
+    $stdout.write NML::Output::NML.call(NML.ast(input.read))
+  rescue NML::Parser::Error => e
+    raise unless file
+    raise e, '%s:%s' % [file, e.message]
   end
 end
