@@ -2,6 +2,207 @@
 
   NML is a neat markup language.
 
-  Inline code is written like ‹this›.
+§ Block Structures
 
-  Emphasis is written like /this/.
+    An NML document consists of a title, a number of blocks, followed by a number
+    of sections.  Before we describe these entities, we need to state that blocks
+    are separated by a non-empty sequence of empty (blank) lines.
+
+  § Document Title
+
+      An NML document’s title consists of the first non-empty sequence of
+      lines, which, in turn, of course consist of inlines.  It is customary for
+      an NML document’s title to be centered.  This document’s title was
+      written as
+
+                                              NML
+
+  § Paragraphs
+
+      A paragraph consists of a non-empty sequence of lines, indented by
+      2×(1+n) spaces, where /n/ is the current section level (nesting).  The
+      first paragraph of this document was thus written as
+
+          NML is a neat markup language.
+
+      Actually, this indention rule is common for all block elements.  That is,
+      the current indention tells you how deeply you are nested and tells an
+      NML processor how to properly treat different elements in the document.
+
+  § Code Blocks
+
+      A Code block consists of a non-empty sequence of lines, indented by two
+      spaces in addition to the current indention level (see the discussion in
+      the previous section).  Thus, the code block from the previous section
+      was written as
+
+                    NML is a neat markup language.
+
+  § Enumerations
+
+      An enumeration – an ordered list – consists of a non-empty sequence of
+      enumerated items.  An item consists of a list-item number followed by
+      three spaces, then followed by a non-empty sequence of inlines.  This
+      sequence can then be followed by any number of block-level elements.
+      These block-level elements will be one level further in than the item
+      itself, so the indention will be 2×(2+n), where /n/ is the current
+      section level.
+
+      The list
+
+    ₁   This is item 1.
+    ₂   This is item 2.
+
+        It consists of two paragraphs.
+    ₃   Item 3, that is, this item, consists of only one paragraph.
+
+      is thus written as
+
+        ₁   This is item 1.
+        ₂   This is item 2.
+
+            It consists of two paragraphs.
+        ₃   Item 3, that is, this item, consists of only one paragraph.
+
+      Perhaps you caught on to the reason for the three spaces?  Though not
+      strictly necessary for being able to unambiguously parse the first line,
+      they are nonetheless needed for the aesthetics of having them line up
+      with any following block elements.  Having this additional indent also
+      makes it possible to have more than nine items in the list and easier to
+      see the numerals.
+
+  § Itemizations
+
+      An itemization – an unordered list – works the same way as an enumeration.
+      The only difference is that a bullet is used instead of list-item numbers:
+
+        •   This is item 1
+        •   This is item 2
+        •   Item 3 here
+
+      renders
+
+    •   This is item 1
+    •   This is item 2
+    •   Item 3 here
+
+  § Tables
+
+      Tables consist of a head and a body.  The head consists of one row.  The
+      body consists of one or more rows.  Each row consists of one or more
+      cells.  Cells are demarkated by ‹|›’s.  The first cell demarkation symbol
+      appears at the beginning of the normal indention.  Thus, the table
+
+    | Part  | Consists of |
+    | Table | Head, Body  |
+    | Head  | Row         |
+    | Body  | Rows        |
+    | Row   | Cells       |
+
+      is written as
+
+          Thus, the table
+
+        | Part  | Consists of |
+        | Table | Head, Body  |
+        | Head  | Row         |
+        | Body  | Rows        |
+        | Row   | Cells       |
+
+          is written as
+
+        …
+
+  § Footnotes
+
+      Any block may be followed by a list of footnotes.  Footnotes are usually
+      used for various inlines that lack a decent syntax.  Footnotes consist of
+      an identifier followed by a space followed by the footnote definition.
+      Valid footnote identifiers are ‹¹›, ‹²›, ‹³›, ‹⁴›, ‹⁵›, ‹⁶›, ‹⁷›, ‹⁸›,
+      ‹⁹›.
+
+      Footnote definitions aren’t free-form and must follow a set of patterns.
+      Here’s an example:
+
+          Drop me a line¹.
+
+        ¹ Email me at mailto:example@example.com
+
+      This is a paragraph consisting of the text “Drop me a line”.  The word
+      “line” has a footnote associated with it (identified by ‹¹›).  The
+      footnote is defined as a link to “mailto:example@example.com”.  The link
+      title will be “Email me”.  In the NML markup this will be converted to
+
+        <p>Drop me a
+          <ref title="Email me" uri="mailto:example@example.com">line</ref></p>
+
+      The identifiers don’t have to come in order, which makes re-ordering
+      unnecessary in the event that footnotes are added and deleted during
+      editing.
+
+      Footnotes nest, so you don’t have to define a footnote as soon as
+      possible.  You can, for example, leave all footnoting of a list’s items
+      to the list as a whole.  (In fact, you can’t define footnotes for the
+      first paragraph of an item anyway.  This is a limitation that may be
+      lifted in the future, but it’s really not that much of a limitation, as
+      having footnotes sprinkled inside your lists makes for very messy lists.
+      In fact, having blocks in your lists at all is sort of messy, but I
+      digress…)
+
+§ Sections
+
+    Sections consist of a title, followed by a sequence of empty lines, then a
+    sequence of blocks, another sequences of empty lines, and finally a
+    sequence of subsections.  Sections can currently only be nested to two
+    levels.  The first section of this document was written as
+
+      § Block Structures
+
+          An NML document consists of a title, a number of blocks, followed …
+
+    Here you see that start of a new section is identified by a ‘§’ followed by
+    the section title.  The blocks are, as you see, indented in the manner
+    described earlier.
+
+§ Inlines
+
+    Inlines consist of a sequence of words or inline types (described below)
+    separated by whitespace.  All whitespace is normalized into one space
+    character, ‘ ’.
+
+  § Code
+
+      Inline code is surrounded by ‹‹› and ‹››.  Taking a line earlier in this
+      document as an example, we thus have
+
+        Valid footnote identifiers are ‹¹›, ‹²›, …
+
+  § Emphasis
+
+      Emphasis is written like ‹/this/›.
+
+  § Groups
+
+      Sometimes you want a footnote to refer to more than one inline.  You can
+      then group a number of inlines by surrounding them with ‹{› and ‹}›:
+
+        {Drop me a line}¹.
+
+      Here, footnote ‹¹› will refer to the words “Drop me a line”.
+
+  § Footnotes
+
+      Footnotes may be added to any inline by appending them to it.  More than
+      one footnote may be added by separating the footnotes with a ‹⁺›.
+      Footnotes are processed left to right, so the leftmost will be the
+      innermost one in the AST/XML representation.  Thus,
+
+        {Drop me a line}¹⁺²
+
+      will be represented by the following (imaginary) XML structure
+
+        <footnote identifier="²">
+          <footnote identifier="¹">
+            <group>Drop me a line</group>
+          </footnote>
+        </footnote>
