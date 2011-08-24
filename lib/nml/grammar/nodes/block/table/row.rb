@@ -2,7 +2,7 @@
 
 class NML::Grammar::Nodes::Block::Table::Row < Treetop::Runtime::SyntaxNode
   def count
-    1 + rest.elements.count
+    cells.elements.count
   end
 
   def line
@@ -14,6 +14,6 @@ class NML::Grammar::Nodes::Block::Table::Row < Treetop::Runtime::SyntaxNode
   end
 
   def to_ast
-    NML::AST::Block::Table::Row.new(*([first.to_ast] + rest.elements.map{ |e| e.cell.to_ast }))
+    NML::AST::Block::Table::Row.new(*cells.elements.map{ |e| e.cell.to_ast })
   end
 end

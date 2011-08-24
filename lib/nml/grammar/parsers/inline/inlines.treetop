@@ -1,7 +1,10 @@
 module NML::Grammar::Parsers::Inline
   grammar Inlines
     rule inlines
-      first:footnoted rest:(inlinespace footnoted)*
+      ignorableinlinespace
+      first:footnoted
+      rest:(inlinespace footnoted)*
+      ignorableinlinespace
       <NML::Grammar::Nodes::Inline::Inlines>
     end
 
@@ -10,17 +13,21 @@ module NML::Grammar::Parsers::Inline
       <NML::Grammar::Nodes::Inline::Footnoted>
     end
 
+    rule ignorableinlinespace
+      (!"\n" [\s])*
+    end
+
+    rule inlinespace
+      (!"\n" [\s])+
+      <NML::Grammar::Nodes::Inline::Text>
+    end
+
     rule inline
       text
     end
 
     rule text
       (!endinline [\S])+
-      <NML::Grammar::Nodes::Inline::Text>
-    end
-
-    rule inlinespace
-      !"\n" [\s]+
       <NML::Grammar::Nodes::Inline::Text>
     end
 
