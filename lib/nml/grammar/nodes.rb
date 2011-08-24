@@ -8,7 +8,7 @@ module NML::Grammar::Nodes
     def normalize(inlines)
       inlines.reduce([]){ |result, inline|
         String === inline && String === result.last ?
-          result.last << ' ' << inline :
+          result.last << inline :
           result << inline
         result
       }.map{ |inline| String === inline ? inline.gsub(/\s+/, ' ') : inline }

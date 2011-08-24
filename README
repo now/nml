@@ -1,5 +1,7 @@
-NML
+                                      NML
 
   NML is a neat markup language.
 
   Inline code is written like ‹this›.
+
+  Emphasis is written like /this/.

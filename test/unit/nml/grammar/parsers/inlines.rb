@@ -29,6 +29,10 @@ Expectations do
     NML::Grammar::Parsers::InlinesParser.ast('a‹b›c')
   end
 
+  expect ['a/b/c'] do
+    NML::Grammar::Parsers::InlinesParser.ast('a/b/c')
+  end
+
   expect ['a', ' ', NML::AST::Inline::Code.new('b/c/d'), ' ', 'e'] do
     NML::Grammar::Parsers::InlinesParser.ast('a ‹b/c/d› e')
   end
@@ -62,5 +66,9 @@ Expectations do
 
   expect ['a|b'] do
     NML::Grammar::Parsers::Inline::InlinesParser.ast('a|b')
+  end
+
+  expect [NML::AST::Inline::Emphasis.new('a'), '', '.'] do
+    NML::Grammar::Parsers::InlinesParser.ast('/a/.')
   end
 end
