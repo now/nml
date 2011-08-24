@@ -63,4 +63,4 @@ rule '.rb' => ['.treetop'] do |t|
   end
 end
 
-task :default => treetops.map{ |t| t.sub(/\.treetop\z/, '.rb') }
+task :test => treetops.map{ |t| t.sub(/\.treetop\z/, '.rb') }
