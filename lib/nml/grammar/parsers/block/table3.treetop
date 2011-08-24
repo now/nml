@@ -3,17 +3,17 @@ module NML::Grammar::Parsers::Block
     include Row
 
     rule table3
-      head
-      body
+      head:head3
+      body:body3
       <NML::Grammar::Nodes::Block::Table>
     end
 
-    rule head
+    rule head3
       '    ' row
       <NML::Grammar::Nodes::Block::Table::Head>
     end
 
-    rule body
+    rule body3
       ('    ' row)+
       <NML::Grammar::Nodes::Block::Table::Body>
     end

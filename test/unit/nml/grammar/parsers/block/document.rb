@@ -89,4 +89,13 @@ Expectations do
                                  NML::AST::Block::Table::Cell.new('4'))))) do
     NML::Grammar::Parsers::Block::DocumentParser.ast("Title\n\n| A | B |\n| 1 | 2 |\n| 3 | 4 |")
   end
+
+  expect NML::AST::Block::Document.
+           new(NML::AST::Block::Title.new('Title'),
+               NML::AST::Block::Section.
+                new(NML::AST::Block::Title.new('Title'),
+                    NML::AST::Block::Section.
+                      new(NML::AST::Block::Title.new('Title')))) do
+    NML::Grammar::Parsers::Block::DocumentParser.ast("Title\n\n§ Title\n\n  § Title")
+  end
 end

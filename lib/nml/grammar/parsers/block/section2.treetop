@@ -4,18 +4,18 @@ module NML::Grammar::Parsers::Block
     include Inlines2
 
     rule section2
-      '  § ' title
+      '  § ' title:title2
       blocks:blocks3
-      sections
+      sections:sections2
       <NML::Grammar::Nodes::Block::Section>
     end
 
-    rule title
+    rule title2
       '' inlines:inlines2
       <NML::Grammar::Nodes::Block::Title>
     end
 
-    rule sections
+    rule sections2
       ''
       <NML::Grammar::Nodes::Block::Sections>
     end
