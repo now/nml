@@ -8,4 +8,8 @@ Expectations do
   expect NML::AST::Block::Code.new("def id(a)\n  a\nend") do
     NML::Grammar::Parsers::Block::Code2Parser.ast("      def id(a)\n        a\n      end")
   end
+
+  expect NML::AST::Block::Code.new("def id(a)\n\n  a\n\nend") do
+    NML::Grammar::Parsers::Block::Code2Parser.ast("      def id(a)\n\n        a\n\n      end")
+  end
 end

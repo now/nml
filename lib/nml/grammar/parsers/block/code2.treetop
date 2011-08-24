@@ -1,8 +1,10 @@
 module NML::Grammar::Parsers::Block
   grammar Code2
+    include Common
+
     rule code2
       '      ' first:[^\n]*
-      rest:("\n      " line:[^\n]*)*
+      rest:(newlines:blankline+ '      ' line:[^\n]*)*
       <NML::Grammar::Nodes::Block::Code>
     end
   end
