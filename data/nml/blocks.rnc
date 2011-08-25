@@ -3,37 +3,29 @@ section.attributes = common.attributes
 section.content =
   title,
   subtitle?,
-  common.flow.content
-
-common.flow.elements |= section
+  common.block.content
+common.block.elements |= section
 
 p = element p { p.attributes, p.content }
 p.attributes = common.attributes
-p.content = common.phrasing.content
+p.content = common.inline.content
+common.block.elements |= p
 
-common.flow.elements |= p
-
-flow.code = element code { flow.code.attributes, flow.code.content }
-flow.code.language.attribute = attribute language { text }
-flow.code.attributes =
+block.code = element code { block.code.attributes, block.code.content }
+block.code.language.attribute = attribute language { text }
+block.code.attributes =
   common.attributes,
-  flow.code.language.attribute
-flow.code.content = common.phrasing.content
-
-common.flow.elements |= code
-
-equation = element equation { equation.attributes, text }
-equation.attributes = common.attributes
-
-common.flow.elements |= equation
+  block.code.language.attribute?
+block.code.content = common.inline.content
+common.block.elements |= block.code
 
 figure = element figure { figure.attributes, figure.content }
+figure.float.attribute = attribute float { 'left' | 'right' }
 figure.attributes =
   common.attributes,
-  attribute float { 'left' | 'right' }
+  figure.float.attribute?
 figure.content = image
-
-common.flow.elements |= figure
+common.block.elements |= figure
 
 definitions = element definitions {
   definitions.attributes,
@@ -41,8 +33,7 @@ definitions = element definitions {
 }
 definitions.attributes = common.attributes
 definitions.content = definitions.item+
-
-common.flow.elements |= definitions
+common.block.elements |= definitions
 
 definitions.item = element item {
   definitions.item.attributes,
@@ -51,25 +42,23 @@ definitions.item = element item {
 definitions.item.attributes = common.attributes
 definitions.item.content = term+, definition
 
-term = element term { term.attributes, common.phrasing.content }
+term = element term { term.attributes, common.inline.content }
 term.attributes = common.attributes
 
 definition = element definition { definition.attributes, definitions.content }
 definition.attributes = common.attributes
-definition.content = common.flow.content
+definition.content = common.block.content
 
 itemization = element itemization { itemization.attributes, itemization.content }
 itemization.attributes = common.attributes
 itemization.content = item+
-
-common.flow.elements |= itemization
+common.block.elements |= itemization
 
 item = element item { item.attributes, item.content }
 item.attributes = common.attributes
-item.content = common.flow.content
+item.content = common.block.content
 
 enumeration = element enumeration { enumeration.attributes, enumeration.content }
 enumeration.attributes = common.attributes
 enumeration.content = item+
-
-common.flow.elements |= enumeration
+common.block.elements |= enumeration

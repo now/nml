@@ -11,8 +11,8 @@ common.attributes =
   common.xml.lang.attribute?,
   common.class.attribute?
 
-common.phrasing.elements = notAllowed
-common.flow.elements = common.phrasing.elements
+common.inline.elements = notAllowed
+common.block.elements = common.inline.elements
 
-common.phrasing.content = (text | common.phrasing.elements)*
-common.flow.content = common.flow.elements*
+common.inline.content = (text | common.inline.elements)*
+common.block.content = common.block.elements*

@@ -1,9 +1,7 @@
 include 'common.rnc'
-include 'ebnf.rnc'
-include 'flow.rnc'
+include 'blocks.rnc'
 include 'meta.rnc'
-include 'names.rnc'
-include 'phrasing.rnc'
+include 'inlines.rnc'
 include 'tables.rnc'
 
 start =
@@ -16,4 +14,4 @@ nml.attributes = common.attributes
 nml.content =
   title,
   subtitle?,
-  common.flow.content
+  common.block.content

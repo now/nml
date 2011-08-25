@@ -1,10 +1,9 @@
 table = element table { table.attributes, table.content }
 table.attributes = common.attributes
 table.content =
-  head?,
+  head,
   body
-
-common.flow.elements |= table
+common.block.elements |= table
 
 head = element head { head.attributes, head.content }
 head.attributes = common.attributes
@@ -12,14 +11,14 @@ head.content = row+
 
 row = element row { row.attributes, row.content }
 row.attributes = common.attributes
-row.content = cell*
+row.content = cell+
 
 cell = element cell { cell.attributes, cell.content }
 cell.attributes =
   common.attributes,
   attribute columnspan { text }?,
   attribute rowspan { text }?
-cell.content = common.flow.content
+cell.content = common.block.content
 
 body = element body { body.attributes, body.content }
 body.attributes = common.attributes

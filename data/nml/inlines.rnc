@@ -1,0 +1,61 @@
+abbreviation = element abbreviation { abbreviation.attributes, abbreviation.content }
+abbreviation.for.attribute = attribute for { text }
+abbreviation.attributes =
+  common.attributes,
+  abbreviation.for.attribute
+abbreviation.content =
+  common.inline.content
+common.inline.elements |= abbreviation
+
+code = element code { code.attributes, code.content }
+code.language.attribute = attribute language { text }
+code.attributes =
+  common.attributes,
+  code.language.attribute?
+code.content = common.inline.content
+common.inline.elements |= code
+
+define = element define { define.attributes, define.content }
+define.uri.attribute = attribute uri { text }
+define.attributes =
+  common.attributes,
+  define.uri.attribute?
+define.content = common.inline.content
+common.inline.elements |= define
+
+emphasis = element emphasis { emphasis.attributes, emphasis.content }
+emphasis.attributes = common.attributes
+emphasis.content = common.inline.content
+common.inline.elements |= emphasis
+
+image = element image { image.attributes, empty }
+image.uri.attribute = attribute uri { xsd:anyURI }
+image.attributes =
+  common.attributes,
+  image.uri.attribute
+common.inline.elements |= image
+
+ref = element ref { ref.attributes, ref.content }
+ref.relation.attribute = attribute relation { text }
+ref.title.attribute = attribute title { text }
+ref.uri.attribute = attribute uri { xsd:anyURI }
+ref.attributes =
+  common.attributes,
+  ref.relation.attribute?,
+  ref.title.attribute?,
+  ref.uri.attribute
+ref.content = common.inline.content
+common.inline.elements |= ref
+
+quote = element quote { quote.attributes, quote.content }
+quote.source.attribute = attribute source { xsd:anyURI }
+quote.attributes =
+  common.attributes,
+  quote.source.attribute?
+quote.content = common.inline.content
+common.inline.elements |= quote
+
+span = element span { span.attributes, span.content }
+span.attributes = common.attributes
+span.content = common.inline.content
+common.inline.elements |= span
