@@ -18,6 +18,9 @@ treetops = %w[
   lib/nml/grammar/parsers/block/code3.treetop
   lib/nml/grammar/parsers/block/common.treetop
   lib/nml/grammar/parsers/block/document.treetop
+  lib/nml/grammar/parsers/block/definitions1.treetop
+  lib/nml/grammar/parsers/block/definitions2.treetop
+  lib/nml/grammar/parsers/block/definitions3.treetop
   lib/nml/grammar/parsers/block/enumeration1.treetop
   lib/nml/grammar/parsers/block/enumeration2.treetop
   lib/nml/grammar/parsers/block/enumeration3.treetop

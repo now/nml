@@ -58,7 +58,9 @@ class NML::AST::Node
   end
 
   def inspect
-    '%s.new(%s)' % [self.class, (attributes + children).map{ |e| e.inspect }.join(', ')]
+    attributes.length + children.length > 0 ?
+      '%s.new(%s)' % [self.class, (attributes + children).map{ |e| e.inspect }.join(', ')] :
+      '%s.new' % self.class
   end
 
 protected

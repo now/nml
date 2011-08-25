@@ -88,15 +88,40 @@
 
   § Definitions
 
-      Definition lists look like this:
+    = Definitions
+        Definitions are a non-empty sequence of definitions.
+    = Definition
+        A definition consists of a non-empty sequence of terms, followed by a
+        sequence of blocks that constite the definition
+    = Term
+        A term is a sequence of inlines preceded by ‹= › in the indention.
 
-        Definition lists look like this:
+      The above list was thus written as
 
-      = Term
-          Definition of Term.
-      = Term 2
-          Definition of Term.
+        = Definitions
+            Definitions are a non-empty sequence of definitions.
+        = Definition
+            A definition consists of a non-empty sequence of terms, followed by
+            a sequence of blocks that constite the definition
+        = Term
+            A term is a sequence of inlines preceded by ‹= › in the indention.
 
+      You can define many terms that have the same definition at once by
+      listing each of them before the definition:
+
+        = A
+        = B
+            Definition that defines both A and B.
+
+      Terms may span multiple lines, but following lines must then not be
+      indented more than necessary:
+
+        = A long term that
+          requires multiple lines to name
+            The terms definition goes here.
+
+      If the second line in the example above was indented any further it would
+      have been seen as the start of the definition of the term.
 
   § Tables
 

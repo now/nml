@@ -7,5 +7,11 @@ module NML::Grammar::Parsers::Block
       rest:("\n  " inlines)*
       <NML::Grammar::Nodes::Block::Inlines>
     end
+
+    rule strictinlines1
+      first:inlines
+      rest:("\n  " ![\s] inlines)*
+      <NML::Grammar::Nodes::Block::Inlines>
+    end
   end
 end

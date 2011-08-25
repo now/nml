@@ -3,6 +3,8 @@
 module NML::Grammar::Nodes::Block
   autoload :Blocks, 'nml/grammar/nodes/block/blocks'
   autoload :Code, 'nml/grammar/nodes/block/code'
+  autoload :Definition, 'nml/grammar/nodes/block/definition'
+  autoload :Definitions, 'nml/grammar/nodes/block/definitions'
   autoload :Document, 'nml/grammar/nodes/block/document'
   autoload :Enumeration, 'nml/grammar/nodes/block/enumeration'
   autoload :Footnote, 'nml/grammar/nodes/block/footnote'
@@ -15,5 +17,7 @@ module NML::Grammar::Nodes::Block
   autoload :Section, 'nml/grammar/nodes/block/section'
   autoload :Sections, 'nml/grammar/nodes/block/sections'
   autoload :Table, 'nml/grammar/nodes/block/table'
+  autoload :Term, 'nml/grammar/nodes/block/term'
+  autoload :Terms, 'nml/grammar/nodes/block/terms'
   autoload :Title, 'nml/grammar/nodes/block/title'
 end

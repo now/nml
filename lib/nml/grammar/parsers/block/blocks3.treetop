@@ -2,6 +2,7 @@ module NML::Grammar::Parsers::Block
   grammar Blocks3
     include Common
     include Code3
+    include Definitions3
     include Enumeration3
     include Footnotes3
     include Itemization3
@@ -23,6 +24,7 @@ module NML::Grammar::Parsers::Block
 
     rule block3
       code3 /
+      definitions3 /
       enumeration3 /
       itemization3 /
       paragraph3 /

@@ -1,0 +1,39 @@
+module NML::Grammar::Parsers::Block
+  grammar Definitions3
+    include Common
+    include Inlines3
+    include Inlines4
+
+    rule definitions3
+      first:definition3 rest:(blankline+ definition:definition3)*
+      <NML::Grammar::Nodes::Block::Definitions>
+    end
+
+    rule definition3
+      terms:terms3
+      definition:definitionblocks4
+      <NML::Grammar::Nodes::Block::Definition>
+    end
+
+    rule terms3
+      first:term3 rest:("\n" term:term3)*
+      <NML::Grammar::Nodes::Block::Terms>
+    end
+
+    rule term3
+      '    = ' inlines:strictinlines3
+      <NML::Grammar::Nodes::Block::Term>
+    end
+
+    # TODO: This is a hack until we get real blocks4 (if we ever do).
+    rule definitionblocks4
+      ('' block:definitionparagraph4) 1..1
+      <NML::Grammar::Nodes::Block::Blocks>
+    end
+    
+    rule definitionparagraph4
+      "\n        " inlines:inlines4
+      <NML::Grammar::Nodes::Block::Paragraph>
+    end
+  end
+end

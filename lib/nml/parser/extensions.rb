@@ -8,7 +8,7 @@ module NML::Parser::Extensions
         new('expected %s%s' %
               [parser.terminal_failures.count > 1 ? 'one of ' : '',
                parser.terminal_failures.map{ |f|
-                 f.expected_string =~ /\s/ ?
+                 f.expected_string =~ /\A\s*\z/ ?
                    f.expected_string.inspect :
                    f.expected_string
                }.uniq.join(', ')],

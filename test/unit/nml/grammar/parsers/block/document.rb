@@ -98,4 +98,15 @@ Expectations do
                       new(NML::AST::Block::Title.new('Title')))) do
     NML::Grammar::Parsers::Block::DocumentParser.ast("Title\n\n§ Title\n\n  § Title")
   end
+
+  expect NML::AST::Block::Document.
+           new(NML::AST::Block::Title.new('Title'),
+               NML::AST::Block::Definitions.
+                 new(NML::AST::Block::Item.
+                       new(NML::AST::Block::Term.new('A'),
+                           NML::AST::Block::Definition.
+                             new(NML::AST::Block::Paragraph.new('1')))),
+               NML::AST::Block::Paragraph.new('End')) do
+    NML::Grammar::Parsers::Block::DocumentParser.ast("Title\n\n= A\n    1\n\n  End")
+  end
 end

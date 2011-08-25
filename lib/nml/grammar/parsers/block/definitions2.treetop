@@ -1,0 +1,28 @@
+module NML::Grammar::Parsers::Block
+  grammar Definitions2
+    include Blocks3
+    include Common
+    include Inlines2
+
+    rule definitions2
+      first:definition2 rest:(blankline+ definition:definition2)*
+      <NML::Grammar::Nodes::Block::Definitions>
+    end
+
+    rule definition2
+      terms:terms2
+      definition:blocks3
+      <NML::Grammar::Nodes::Block::Definition>
+    end
+
+    rule terms2
+      first:term2 rest:("\n" term:term2)*
+      <NML::Grammar::Nodes::Block::Terms>
+    end
+
+    rule term2
+      '  = ' inlines:strictinlines2
+      <NML::Grammar::Nodes::Block::Term>
+    end
+  end
+end
