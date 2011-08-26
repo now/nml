@@ -207,6 +207,20 @@
     separated by whitespace.  All whitespace is normalized into one space
     character, ‘ ’.
 
+  § Abbreviations
+
+      Abbreviations are defined using footnotes.  Defining an abbreviation,
+      such as NML¹, looks like
+
+    ¹ Abbreviation for Neat Markup Language
+
+          Defining an abbreviation, such as NML¹, looks like
+        
+        ¹ Abbreviation for Neat Markup Language
+
+      Any text that follows ‹Abbreviation for› will be used as the definition
+      of the abbreviation.
+
   § Code
 
       Inline code is surrounded by ‹‹› and ‹››.  Taking a line earlier in this
