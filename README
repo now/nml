@@ -127,7 +127,7 @@
 
       Tables consist of a head and a body.  The head consists of one row.  The
       body consists of one or more rows.  Each row consists of one or more
-      cells.  Cells are demarkated by ‹|›’s.  The first cell demarkation symbol
+      cells.  Cells are demarkated by ‘|’s.  The first cell demarkation symbol
       appears at the beginning of the normal indention.  Thus, the table
 
     | Part  | Consists of |

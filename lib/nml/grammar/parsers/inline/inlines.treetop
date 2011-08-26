@@ -23,7 +23,7 @@ module NML::Grammar::Parsers::Inline
     end
 
     rule text
-      ([\w]+ / !endinline [\S])+
+      ([\w]+ / '‘' (!"\n" .) '’' / !endinline [\S])+
       <NML::Grammar::Nodes::Inline::Text>
     end
 

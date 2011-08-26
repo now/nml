@@ -12,4 +12,8 @@ Expectations do
   expect [NML::AST::Inline::Footnote.new('¹', 1, 2, 'a')] do
     NML::Grammar::Parsers::Inline::InlinesParser.ast('a¹')
   end
+
+  expect ['‘|’'] do
+    NML::Grammar::Parsers::Inline::InlinesParser.ast('‘|’')
+  end
 end
