@@ -29,7 +29,6 @@ module NML::Grammar::Parsers::Inline
 
     rule endinline
       endcell /
-      endcode /
       endemphasis /
       endgroup /
       footnote
@@ -37,10 +36,6 @@ module NML::Grammar::Parsers::Inline
 
     rule endcell
       '|' ![\w]
-    end
-
-    rule endcode
-      '›' inlineend !'›'
     end
 
     rule endemphasis

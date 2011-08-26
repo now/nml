@@ -5,6 +5,10 @@ Expectations do
     NML::Grammar::Parsers::Inline::CodeParser.ast('‹a›')
   end
 
+  expect NML::AST::Inline::Code.new('›') do
+    NML::Grammar::Parsers::Inline::CodeParser.ast('‹››')
+  end
+
   expect NML::AST::Inline::Code.new('a/b/c') do
     NML::Grammar::Parsers::Inline::CodeParser.ast('‹a/b/c›')
   end

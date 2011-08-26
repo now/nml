@@ -11,5 +11,9 @@ module NML::Grammar::Parsers::Inline
       (!endcode [^\n])+
       <NML::Grammar::Nodes::Inline::Text>
     end
+
+    rule endcode
+      '›' inlineend !'›'
+    end
   end
 end
