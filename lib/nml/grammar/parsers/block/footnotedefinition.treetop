@@ -3,12 +3,12 @@ module NML::Grammar::Parsers::Block
     include Common
 
     rule footnotedefinition
-      link /
-      abbreviation
+      abbreviation /
+      link
     end
 
     rule link
-      title:(!(' at ' [\S]+) .)+ ' at ' uri:[\S]+
+      title:(!(' at ' [\S]+ / "\n") .)+ ' at ' uri:[\S]+
       <NML::Grammar::Nodes::Block::Footnote::Link>
     end
 
