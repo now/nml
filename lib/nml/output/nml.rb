@@ -25,14 +25,10 @@ private
     case node
     when NML::AST::Inline::Group
       children xml, node
-    when NML::AST::Inline::Link
-      xml.ref(:title => node.title, :uri => node.uri){
-        children xml, node
-      }
     when String
       xml.text node
     when NML::AST::Node
-      xml.send(name(node)){
+      xml.send(name(node), Hash[*node.enum_for(:each_attribute).entries.flatten]){
         children xml, node
       }
     else
@@ -48,7 +44,8 @@ private
 
   Names = {
     NML::AST::Block::Document => 'nml',
-    NML::AST::Block::Paragraph => 'p_'
+    NML::AST::Block::Paragraph => 'p_',
+    NML::AST::Inline::Link => 'ref'
   }
 
   def name(node)

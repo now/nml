@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 class NML::Grammar::Nodes::Block::Footnote < Treetop::Runtime::SyntaxNode
+  autoload :Abbreviation, 'nml/grammar/nodes/block/footnote/abbreviation'
   autoload :Link, 'nml/grammar/nodes/block/footnote/link'
 
   def to_ast

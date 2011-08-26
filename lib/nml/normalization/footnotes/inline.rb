@@ -25,12 +25,7 @@ private
         inline node.child
       }
     when NML::AST::Inline::Footnote
-      case definition = @environment[node.identifier].definition
-      when NML::AST::Block::Footnote::Link
-        NML::AST::Inline::Link.new(*(definition.to_a + node.to_a))
-      else
-        raise TypeError, 'unknown node type: %p' % [node]
-      end
+      footnote(@environment[node.identifier].definition, node)
     when String
       node
     when NML::AST::Node
@@ -38,6 +33,19 @@ private
     else
       raise TypeError, 'unknown node type: %p' % [node]
     end
+  end
+
+  Inlines = {
+    NML::AST::Block::Footnote::Abbreviation => NML::AST::Inline::Abbreviation,
+    NML::AST::Block::Footnote::Link => NML::AST::Inline::Link
+  }
+
+  def Inlines.[](definition)
+    super(definition.class) or raise TypeError, 'unknown node type: %p' % [node]
+  end
+
+  def footnote(definition, node)
+    Inlines[definition].new(*(definition.to_a + node.to_a))
   end
 
   class Environment

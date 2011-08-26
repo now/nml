@@ -38,6 +38,12 @@ class NML::AST::Node
     children == @children ? self : self.class.new(*(attributes + children))
   end
 
+  def each_attribute
+    attributes.each_with_index do |attribute, index|
+      yield self.class.attributes[index], attribute
+    end
+  end
+
   def each
     children.each do |child|
       yield child

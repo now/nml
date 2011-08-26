@@ -3,5 +3,13 @@ module NML::Grammar::Parsers::Block
     rule blankline
       "\n"
     end
+
+    rule space
+      (!"\n" [\s])+
+    end
+
+    rule nonnewline
+      (!"\n" .)+
+    end
   end
 end

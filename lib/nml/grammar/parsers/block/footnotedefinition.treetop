@@ -1,12 +1,20 @@
 module NML::Grammar::Parsers::Block
   grammar FootnoteDefinition
+    include Common
+
     rule footnotedefinition
-      link
+      link /
+      abbreviation
     end
 
     rule link
       title:(!(' at ' [\S]+) .)+ ' at ' uri:[\S]+
       <NML::Grammar::Nodes::Block::Footnote::Link>
+    end
+
+    rule abbreviation
+      'Abbreviation' space 'for' space definition:nonnewline
+      <NML::Grammar::Nodes::Block::Footnote::Abbreviation>
     end
   end
 end
