@@ -39,7 +39,7 @@ module NML::Grammar::Parsers::Inline
     end
 
     rule endemphasis
-      '/' inlineend
+      '/' !'/' inlineend
     end
 
     rule endgroup

@@ -16,4 +16,8 @@ Expectations do
   expect ['‘|’'] do
     NML::Grammar::Parsers::Inline::InlinesParser.ast('‘|’')
   end
+
+  expect ['http://example.com'] do
+    NML::Grammar::Parsers::Inline::InlinesParser.ast('http://example.com')
+  end
 end

@@ -257,3 +257,19 @@
             <group>Drop me a line</group>
           </footnote>
         </footnote>
+
+  § Links
+
+      Links are defined using footnotes.  You can, for example, link to
+      http://example.com¹ by writing
+
+    ¹ Visit IANA’s example domain page at http://example.com/
+
+          You can, for example, link to http://example.com¹ by writing
+
+        ¹ Visit IANA’s example domain page at http://example.com/
+
+      Link definitions are rather free-form.  They contain a title, which can
+      be any string, followed by the word ‹at›, followed by a non-empty
+      sequence of non-space characters that constitute the uniform resource
+      identifier (URI) that the link should point to.
