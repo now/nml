@@ -9,6 +9,13 @@ module NML::Grammar::Parsers
       super
     end
 
+    rule nontextinline
+      code /
+      emphasis /
+      group
+    end
+
+    # NOTE: nontextinline is inlined here for efficiency.
     rule inline
       code /
       emphasis /
@@ -23,9 +30,7 @@ module NML::Grammar::Parsers
     end
 
     rule groupedinline
-      code /
-      emphasis /
-      group /
+      nontextinline /
       groupedtext
     end
   end

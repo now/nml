@@ -8,8 +8,40 @@ module NML::Grammar::Parsers::Block
     end
 
     rule cell
-      '' inlines
+      '' cellinlines
       <NML::Grammar::Nodes::Block::Table::Cell>
+    end
+
+    rule cellinlines
+      inlinespace
+      first:cellfootnoted
+      rest:(inlinespace cellfootnoted)*
+      inlinespace
+      <NML::Grammar::Nodes::Inline::Inlines>
+    end
+
+    rule cellfootnoted
+      inline:cellinline footnotes
+      <NML::Grammar::Nodes::Inline::Footnoted>
+    end
+
+    rule cellinline
+      nontextinline /
+      celltext
+    end
+
+    rule celltext
+      ([\w]+ / '‘' (!"\n" .) '’' / !endcelltext [\S])+
+      <NML::Grammar::Nodes::Inline::Text>
+    end
+
+    rule endcelltext
+      endcell /
+      footnote
+    end
+
+    rule endcell
+      '|' ![\w]
     end
   end
 end

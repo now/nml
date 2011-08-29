@@ -85,4 +85,8 @@ Expectations do
           ' ', 'g'] do
     NML::Grammar::Parsers::InlinesParser.ast('a } {bc {d} ef} g')
   end
+
+  expect ['a', ' ', '|', ' ', 'b'] do
+    NML::Grammar::Parsers::InlinesParser.ast('a | b')
+  end
 end
