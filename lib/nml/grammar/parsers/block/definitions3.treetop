@@ -30,7 +30,7 @@ module NML::Grammar::Parsers::Block
       ('' block:definitionparagraph4) 1..1
       <NML::Grammar::Nodes::Block::Blocks>
     end
-    
+
     rule definitionparagraph4
       "\n        " inlines:inlines4
       <NML::Grammar::Nodes::Block::Paragraph>

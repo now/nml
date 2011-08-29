@@ -29,7 +29,7 @@ module NML::Grammar::Parsers::Inline
 
     rule inlineend
       &footnote /
-      ![\w] 
+      ![\w]
     end
 
     rule footnotes

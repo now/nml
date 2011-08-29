@@ -59,7 +59,7 @@ private
     end
 
   private
-  
+
     class Frame
       def initialize(footnotes)
         @footnotes = footnotes
