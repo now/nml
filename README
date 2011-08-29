@@ -31,12 +31,17 @@
 
   § Code Blocks
 
-      A Code block consists of a non-empty sequence of lines, indented by two
+      A code block consists of a non-empty sequence of lines, indented by two
       spaces in addition to the current indention level (see the discussion in
       the previous section).  Thus, the code block from the previous section
       was written as
 
                     NML is a neat markup language.
+
+      Empty lines are skipped, so don’t require the indention to be present.
+
+      The contents of a code block is left completely unprocessed, so you don’t
+      need to worry about markup characters getting in the way.
 
   § Enumerations
 
@@ -204,8 +209,8 @@
 § Inlines
 
     Inlines consist of a sequence of words or inline types (described below)
-    separated by whitespace.  All whitespace is normalized into one space
-    character, ‘ ’.
+    separated by whitespace or punctuation.  All whitespace is normalized into
+    one space character, ‘ ’.
 
   § Abbreviations
 
@@ -228,9 +233,28 @@
 
         Valid footnote identifiers are ‹¹›, ‹²›, …
 
+      The contents inside a code inline is left completely unprocessed.  You
+      can thus use code inlines to write characters that would otherwise be
+      seen as special for NML, as long as it makes sense to mark them as code.
+      The end character, ‘›’, can occur at the end of a code inline, for
+      example, ‹‹code is written like this››, by following the last ‹›› by
+      another ‹››.
+
   § Emphasis
 
-      Emphasis is written like ‹/this/›.
+      Emphasis is written like ‹/this/›.  Emphasis doesn’t nest.  The ending
+      solidus, ‘/’, will only be seen as an ending emphasis if it’s not
+      followed by another solidus.
+
+  § Escaped Characters
+
+      To be able to write characters that would otherwise be seen as special
+      for NML, escaped characters, may be used.  Escaped characters are written
+      as ‹‘c’›, where /c/ is the character to escape.  Note how well this
+      meshes with the standard practice of surrounding a character with single
+      quotes in English when you are referring to the character itself.  Also
+      note that the single quotes will be retained in any output, as the whole
+      sequence is simply seen as text.
 
   § Groups
 
@@ -239,7 +263,8 @@
 
         {Drop me a line}¹.
 
-      Here, footnote ‹¹› will refer to the words “Drop me a line”.
+      Here, footnote ‹¹› will refer to the words “Drop me a line”.  Groups
+      nest.
 
   § Footnotes
 
