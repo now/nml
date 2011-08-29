@@ -13,7 +13,7 @@ module NML::Grammar::Parsers::Inline
     end
 
     rule endcode
-      '›' inlineend !'›'
+      '›' !'›' inlineend
     end
   end
 end
