@@ -71,4 +71,12 @@ Expectations do
   expect [NML::AST::Inline::Emphasis.new('a'), '', '.'] do
     NML::Grammar::Parsers::InlinesParser.ast('/a/.')
   end
+
+  expect ['Visit', ' ', 'http://example.com/', ' ', 'for'] do
+    NML::Grammar::Parsers::InlinesParser.ast('Visit http://example.com/ for')
+  end
+
+  expect ['Visit', ' ', NML::AST::Inline::Emphasis.new('http://example.com/'), ' ', 'for'] do
+    NML::Grammar::Parsers::InlinesParser.ast('Visit /http://example.com// for')
+  end
 end

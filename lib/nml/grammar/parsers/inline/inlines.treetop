@@ -29,17 +29,12 @@ module NML::Grammar::Parsers::Inline
 
     rule endinline
       endcell /
-      endemphasis /
       endgroup /
       footnote
     end
 
     rule endcell
       '|' ![\w]
-    end
-
-    rule endemphasis
-      '/' !'/' inlineend
     end
 
     rule endgroup

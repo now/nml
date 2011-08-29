@@ -3,8 +3,37 @@ module NML::Grammar::Parsers::Inline
     include Inlines
 
     rule emphasis
-      '/' inlines endemphasis
+      '/' emphasizedinlines endemphasis
       <NML::Grammar::Nodes::Inline::Emphasis>
+    end
+
+    rule emphasizedinlines
+      first:emphasizedfootnoted
+      rest:(inlinespace emphasizedfootnoted)*
+      <NML::Grammar::Nodes::Inline::Inlines>
+    end
+
+    rule emphasizedfootnoted
+      inline:emphasizedinline footnotes
+      <NML::Grammar::Nodes::Inline::Footnoted>
+    end
+
+    rule emphasizedinline
+      emphasizedtext
+    end
+
+    rule emphasizedtext
+      ([\w]+ / '‘' (!"\n" .) '’' / !endemphasizedtext [\S])+
+      <NML::Grammar::Nodes::Inline::Text>
+    end
+
+    rule endemphasizedtext
+      endemphasis /
+      footnote
+    end
+
+    rule endemphasis
+      '/' !'/' inlineend
     end
   end
 end

@@ -15,5 +15,11 @@ module NML::Grammar::Parsers
       group /
       text
     end
+
+    rule emphasizedinline
+      code /
+      group /
+      emphasizedtext
+    end
   end
 end
