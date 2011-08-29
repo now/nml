@@ -3,8 +3,37 @@ module NML::Grammar::Parsers::Inline
     include Inlines
 
     rule group
-      '{' inlines endgroup
+      '{' groupedinlines endgroup
       <NML::Grammar::Nodes::Inline::Group>
+    end
+
+    rule groupedinlines
+      first:groupedfootnoted
+      rest:(inlinespace groupedfootnoted)*
+      <NML::Grammar::Nodes::Inline::Inlines>
+    end
+
+    rule groupedfootnoted
+      inline:groupedinline footnotes
+      <NML::Grammar::Nodes::Inline::Footnoted>
+    end
+
+    rule groupedinline
+      groupedtext
+    end
+
+    rule groupedtext
+      ([\w]+ / '‘' (!"\n" .) '’' / !endgroupedtext [\S])+
+      <NML::Grammar::Nodes::Inline::Text>
+    end
+
+    rule endgroupedtext
+      endgroup /
+      footnote
+    end
+
+    rule endgroup
+      '}' inlineend
     end
   end
 end

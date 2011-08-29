@@ -29,16 +29,11 @@ module NML::Grammar::Parsers::Inline
 
     rule endinline
       endcell /
-      endgroup /
       footnote
     end
 
     rule endcell
       '|' ![\w]
-    end
-
-    rule endgroup
-      '}' inlineend
     end
 
     rule inlineend
