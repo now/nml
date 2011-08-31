@@ -1,0 +1,11 @@
+module NML::Grammar::Parsers::Block
+  grammar Code4
+    include Common
+
+    rule code4
+      '          ' first:[^\n]*
+      rest:(newlines:blankline+ '          ' line:[^\n]*)*
+      <NML::Grammar::Nodes::Block::Code>
+    end
+  end
+end

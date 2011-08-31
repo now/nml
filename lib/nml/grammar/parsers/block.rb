@@ -7,7 +7,12 @@ module NML::Grammar::Parsers::Block
   require 'nml/grammar/parsers/block/row'
 
   require 'nml/grammar/parsers/block/inlines4'
+  require 'nml/grammar/parsers/block/code4'
+  require 'nml/grammar/parsers/block/footnotes4'
+  require 'nml/grammar/parsers/block/paragraph4'
+  require 'nml/grammar/parsers/block/table4'
 
+  require 'nml/grammar/parsers/block/blocks4'
   require 'nml/grammar/parsers/block/inlines3'
   require 'nml/grammar/parsers/block/item3'
   require 'nml/grammar/parsers/block/code3'

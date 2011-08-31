@@ -21,6 +21,13 @@ Expectations do
 
   expect NML::AST::Block::Itemization.
            new(NML::AST::Block::Item.
+                 new(NML::AST::Block::Paragraph.new('A'),
+                     NML::AST::Block::Paragraph.new('B'))) do
+    NML::Grammar::Parsers::Block::Itemization2Parser.ast("  •   A\n\n      B")
+  end
+
+  expect NML::AST::Block::Itemization.
+           new(NML::AST::Block::Item.
                  new(NML::AST::Block::Paragraph.new('A B C'),
                      NML::AST::Block::Itemization.
                        new(NML::AST::Block::Item.new(NML::AST::Block::Paragraph.new('D E F'))),

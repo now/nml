@@ -1,0 +1,10 @@
+module NML::Grammar::Parsers::Block
+  grammar Footnotes4
+    include Footnote
+
+    rule footnotes4
+      ('      ' blockfootnote)+
+      <NML::Grammar::Nodes::Block::Footnotes>
+    end
+  end
+end

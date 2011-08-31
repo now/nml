@@ -13,9 +13,11 @@ YARD::Rake::YardocTask.new
 treetops = %w[
   lib/nml/grammar/parsers/block/blocks2.treetop
   lib/nml/grammar/parsers/block/blocks3.treetop
+  lib/nml/grammar/parsers/block/blocks4.treetop
   lib/nml/grammar/parsers/block/code1.treetop
   lib/nml/grammar/parsers/block/code2.treetop
   lib/nml/grammar/parsers/block/code3.treetop
+  lib/nml/grammar/parsers/block/code4.treetop
   lib/nml/grammar/parsers/block/common.treetop
   lib/nml/grammar/parsers/block/document.treetop
   lib/nml/grammar/parsers/block/definitions1.treetop
@@ -29,6 +31,7 @@ treetops = %w[
   lib/nml/grammar/parsers/block/footnotes1.treetop
   lib/nml/grammar/parsers/block/footnotes2.treetop
   lib/nml/grammar/parsers/block/footnotes3.treetop
+  lib/nml/grammar/parsers/block/footnotes4.treetop
   lib/nml/grammar/parsers/block/inlines1.treetop
   lib/nml/grammar/parsers/block/inlines2.treetop
   lib/nml/grammar/parsers/block/inlines3.treetop
@@ -42,6 +45,7 @@ treetops = %w[
   lib/nml/grammar/parsers/block/paragraph1.treetop
   lib/nml/grammar/parsers/block/paragraph2.treetop
   lib/nml/grammar/parsers/block/paragraph3.treetop
+  lib/nml/grammar/parsers/block/paragraph4.treetop
   lib/nml/grammar/parsers/block/row.treetop
   lib/nml/grammar/parsers/block/section1.treetop
   lib/nml/grammar/parsers/block/section2.treetop

@@ -1,0 +1,21 @@
+module NML::Grammar::Parsers::Block
+  grammar Table4
+    include Row
+
+    rule table4
+      head:head4
+      body:body4
+      <NML::Grammar::Nodes::Block::Table>
+    end
+
+    rule head4
+      '      ' row
+      <NML::Grammar::Nodes::Block::Table::Head>
+    end
+
+    rule body4
+      ('      ' row)+
+      <NML::Grammar::Nodes::Block::Table::Body>
+    end
+  end
+end

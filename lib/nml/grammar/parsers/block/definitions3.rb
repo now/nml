@@ -9,11 +9,11 @@ module NML::Grammar::Parsers::Block
       @root ||= :definitions3
     end
 
+    include Blocks4
+
     include Common
 
     include Inlines3
-
-    include Inlines4
 
     module Definitions30
       def definition
@@ -123,7 +123,7 @@ module NML::Grammar::Parsers::Block
       r1 = _nt_terms3
       s0 << r1
       if r1
-        r2 = _nt_definitionblocks4
+        r2 = _nt_blocks4
         s0 << r2
       end
       if s0.last
@@ -253,109 +253,6 @@ module NML::Grammar::Parsers::Block
       end
 
       node_cache[:term3][start_index] = r0
-
-      r0
-    end
-
-    module Definitionblocks40
-      def block
-        elements[1]
-      end
-    end
-
-    def _nt_definitionblocks4
-      start_index = index
-      if node_cache[:definitionblocks4].has_key?(index)
-        cached = node_cache[:definitionblocks4][index]
-        if cached
-          cached = SyntaxNode.new(input, index...(index + 1)) if cached == true
-          @index = cached.interval.end
-        end
-        return cached
-      end
-
-      s0, i0 = [], index
-      loop do
-        i1, s1 = index, []
-        if has_terminal?('', false, index)
-          r2 = instantiate_node(SyntaxNode,input, index...(index + 0))
-          @index += 0
-        else
-          terminal_parse_failure('')
-          r2 = nil
-        end
-        s1 << r2
-        if r2
-          r3 = _nt_definitionparagraph4
-          s1 << r3
-        end
-        if s1.last
-          r1 = instantiate_node(SyntaxNode,input, i1...index, s1)
-          r1.extend(Definitionblocks40)
-        else
-          @index = i1
-          r1 = nil
-        end
-        if r1
-          s0 << r1
-        else
-          break
-        end
-        if s0.size == 1
-          break
-        end
-      end
-      if s0.size < 1
-        @index = i0
-        r0 = nil
-      else
-        r0 = instantiate_node(NML::Grammar::Nodes::Block::Blocks,input, i0...index, s0)
-      end
-
-      node_cache[:definitionblocks4][start_index] = r0
-
-      r0
-    end
-
-    module Definitionparagraph40
-      def inlines
-        elements[1]
-      end
-    end
-
-    def _nt_definitionparagraph4
-      start_index = index
-      if node_cache[:definitionparagraph4].has_key?(index)
-        cached = node_cache[:definitionparagraph4][index]
-        if cached
-          cached = SyntaxNode.new(input, index...(index + 1)) if cached == true
-          @index = cached.interval.end
-        end
-        return cached
-      end
-
-      i0, s0 = index, []
-      if has_terminal?("\n        ", false, index)
-        r1 = instantiate_node(SyntaxNode,input, index...(index + 9))
-        @index += 9
-      else
-        terminal_parse_failure("\n        ")
-        r1 = nil
-      end
-      s0 << r1
-      if r1
-        r2 = _nt_inlines4
-        s0 << r2
-      end
-      if s0.last
-        r0 = instantiate_node(NML::Grammar::Nodes::Block::Paragraph,input, i0...index, s0)
-        r0.extend(Definitionparagraph40)
-      else
-        @index = i0
-        r0 = nil
-      end
-
-      node_cache[:definitionparagraph4][start_index] = r0
 
       r0
     end

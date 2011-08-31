@@ -6,8 +6,13 @@ class NML::CLI < Ame::Root
   Version = NML::Version
 
   description 'Convert NMC files to NML files'
+  option :'templates-root', 'Output template root path and exit'
   splat :file, 'Source NMC file', :optional => true
-  def nmc(files)
+  def nmc(files, options)
+    if options[:'templates-root']
+      $stdout.write File.join(NML::DataPath, 'templates')
+      exit
+    end
     if files.empty?
       nmlize nil, $stdin
     else

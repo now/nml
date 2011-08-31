@@ -55,15 +55,19 @@
 
       The list
 
-    ₁   This is item 1
-    ₂   This is item 2
-    ₃   This is item 3
+    ₁   This is item 1.
+    ₂   This is item 2.
+
+        It consists of two paragraphs.
+    ₃   This is item 3.
 
       is thus written as
 
-        ₁   This is item 1
-        ₂   This is item 2
-        ₃   This is item 3
+        ₁   This is item 1.
+        ₂   This is item 2.
+
+            It consists of two paragraphs.
+        ₃   This is item 3.
 
       Perhaps you caught on to the reason for the three spaces?  Though not
       strictly necessary for being able to unambiguously parse the first line,

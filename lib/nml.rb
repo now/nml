@@ -13,6 +13,8 @@ module NML
 
   require 'nml/parser'
 
+  DataPath = File.expand_path('../../data', __FILE__)
+
   def self.parse(string)
     Grammar::Parsers::Block::DocumentParser.new.parse(string)
   end
