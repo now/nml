@@ -1,9 +1,11 @@
 module NML::Grammar::Parsers::Block
   grammar Itemization3
+    include Common
     include Item3
 
     rule itemization3
-      ('    •   ' item:item3)+
+      '    ' itemizationlabel first:item3
+      rest:("\n    " itemizationlabel item:item3)*
       <NML::Grammar::Nodes::Block::Itemization>
     end
   end

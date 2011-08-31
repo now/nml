@@ -1,9 +1,11 @@
 module NML::Grammar::Parsers::Block
   grammar Enumeration2
+    include Common
     include Item2
 
     rule enumeration2
-      ('  ' ('₁' / '₂' / '₃' / '₄' / '₅' / '₆' / '₇' / '₈' / '₉' / '₀') '   ' item:item2)+
+      '  ' enumerationlabel first:item2
+      rest:("\n  " enumerationlabel item:item2)*
       <NML::Grammar::Nodes::Block::Enumeration>
     end
   end

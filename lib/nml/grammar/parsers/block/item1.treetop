@@ -10,7 +10,7 @@ module NML::Grammar::Parsers::Block
     end
 
     rule first1
-      inlines:inlines2 ("\n" / !.)
+      '' inlines:inlines2
       <NML::Grammar::Nodes::Block::Paragraph>
     end
   end

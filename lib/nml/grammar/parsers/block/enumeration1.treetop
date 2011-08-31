@@ -1,11 +1,11 @@
 module NML::Grammar::Parsers::Block
   grammar Enumeration1
+    include Common
     include Item1
 
-    # NOTE: We would like to use [₁₂₃₄₅₆₇₈₉₀], but until we provide
-    # Treetop with a Unicode-enabled string, this won’t work.
     rule enumeration1
-      (('₁' / '₂' / '₃' / '₄' / '₅' / '₆' / '₇' / '₈' / '₉' / '₀') '   ' item:item1)+
+      enumerationlabel first:item1
+      rest:("\n" enumerationlabel item:item1)*
       <NML::Grammar::Nodes::Block::Enumeration>
     end
   end

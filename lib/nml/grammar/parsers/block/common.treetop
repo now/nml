@@ -11,5 +11,15 @@ module NML::Grammar::Parsers::Block
     rule nonnewline
       (!"\n" .)+
     end
+
+    # NOTE: We would like to use [₁₂₃₄₅₆₇₈₉₀], but until we provide
+    # Treetop with a Unicode-enabled string, this won’t work.
+    rule enumerationlabel
+      ('₁' / '₂' / '₃' / '₄' / '₅' / '₆' / '₇' / '₈' / '₉' / '₀') '   '
+    end
+
+    rule itemizationlabel
+      '•   '
+    end
   end
 end
