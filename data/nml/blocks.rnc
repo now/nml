@@ -64,5 +64,13 @@ common.block.elements |= enumeration
 
 block.quote = element quote { block.quote.attributes, block.quote.content }
 block.quote.attributes = common.attributes
-block.quote.content = line+
+block.quote.content = line+, attribution?
 common.block.elements |= block.quote
+
+line = element line { line.attributes, line.content }
+line.attributes = common.attributes
+line.content = common.inline.content
+
+attribution = element attribution { attribution.attributes, attribution.content }
+attribution.attributes = common.attributes
+attribution.content = common.inline.content
