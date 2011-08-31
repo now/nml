@@ -1,7 +1,3 @@
 title = element title { title.attributes, title.content }
 title.attributes = common.attributes
 title.content = common.inline.content
-
-subtitle = element subtitle { subtitle.attributes, subtitle.content }
-subtitle.attributes = common.attributes
-subtitle.content = common.inline.content

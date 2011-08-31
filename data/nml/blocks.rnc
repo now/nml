@@ -2,7 +2,6 @@ section = element section { section.attributes, section.content }
 section.attributes = common.attributes
 section.content =
   title,
-  subtitle?,
   common.block.content
 common.block.elements |= section
 

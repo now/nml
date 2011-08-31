@@ -13,5 +13,4 @@ nml = element nml { nml.attributes, nml.content }
 nml.attributes = common.attributes
 nml.content =
   title,
-  subtitle?,
   common.block.content
