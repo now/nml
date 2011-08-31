@@ -154,11 +154,17 @@
 
     > Perfection (in design) is achieved not when there is nothing more to
       add, but rather when there is nothing more to take away.
+    — Antoine de Saint-Exupéry
 
       This was written as
 
         > Perfection (in design) is achieved not when there is nothing more to
           add, but rather when there is nothing more to take away.
+        — Antoine de Saint-Exupéry
+
+      This example also introduced the attribution line.  The attribution line
+      is optional and may directly follow the lines of the quote.  It is
+      introduced with ‹— ›, that is, an em dash, ‘—’, followed by a space, ‘ ’.
 
   § Tables
 

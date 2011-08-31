@@ -6,6 +6,7 @@ module NML::Grammar::Parsers::Block
     rule quote3
       '    > ' first:inlines3
       rest:("\n    > " inlines:inlines3)*
+      attribution:("\n    — " inlines:inlines3)?
       <NML::Grammar::Nodes::Block::Quote>
     end
   end
