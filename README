@@ -36,7 +36,7 @@
       the previous section).  Thus, the code block from the previous section
       was written as
 
-                    NML is a neat markup language.
+                  NML is a neat markup language.
 
       Empty lines are skipped, so don’t require the indention to be present.
 
