@@ -32,6 +32,10 @@ lib/nml/grammar/parsers/block/paragraph1.rb
 lib/nml/grammar/parsers/block/paragraph2.rb
 lib/nml/grammar/parsers/block/paragraph3.rb
 lib/nml/grammar/parsers/block/paragraph4.rb
+lib/nml/grammar/parsers/block/quote1.rb
+lib/nml/grammar/parsers/block/quote2.rb
+lib/nml/grammar/parsers/block/quote3.rb
+lib/nml/grammar/parsers/block/quote4.rb
 lib/nml/grammar/parsers/block/row.rb
 lib/nml/grammar/parsers/block/section1.rb
 lib/nml/grammar/parsers/block/section2.rb

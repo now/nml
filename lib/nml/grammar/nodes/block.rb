@@ -14,6 +14,7 @@ module NML::Grammar::Nodes::Block
   autoload :Item, 'nml/grammar/nodes/block/item'
   autoload :Itemization, 'nml/grammar/nodes/block/itemization'
   autoload :Paragraph, 'nml/grammar/nodes/block/paragraph'
+  autoload :Quote, 'nml/grammar/nodes/block/quote'
   autoload :Section, 'nml/grammar/nodes/block/section'
   autoload :Sections, 'nml/grammar/nodes/block/sections'
   autoload :Table, 'nml/grammar/nodes/block/table'

@@ -128,6 +128,38 @@
       If the second line in the example above was indented any further it would
       have been seen as the start of the definition of the term.
 
+  § Quotes
+
+      Quotes consists of a non-empty sequence of lines.  Each line consists of
+      a non-empty sequence of inlines.  To quote Shakespeare:
+
+    > To clique, or not to clique, that is the question:
+    > Whether ’tis nobler in the mind to suffer
+    > The slings and arrows of outrageous fortune,
+    > Or to take arms against a sea of troubles,
+    > And by opposing end them?
+
+      Here, each line is an actual line from Hamlet.  It was rendered by
+
+        > To clique, or not to clique, that is the question:
+        > Whether 'tis nobler in the mind to suffer
+        > The slings and arrows of outrageous fortune,
+        > Or to take arms against a sea of troubles,
+        > And by opposing end them?
+
+      Sometimes you want a quote to span multiple lines, but only actually
+      render as one.  In that case you simply replace the ‹>› with ‹ ›, that
+      is, a space (‘ ’).  Let’s use the following quote, due to Antoine de
+      Saint-Exupéry, as an example:
+
+    > Perfection (in design) is achieved not when there is nothing more to
+      add, but rather when there is nothing more to take away.
+
+      This was written as
+
+        > Perfection (in design) is achieved not when there is nothing more to
+          add, but rather when there is nothing more to take away.
+
   § Tables
 
       Tables consist of a head and a body.  The head consists of one row.  The

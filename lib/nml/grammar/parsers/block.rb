@@ -10,6 +10,7 @@ module NML::Grammar::Parsers::Block
   require 'nml/grammar/parsers/block/code4'
   require 'nml/grammar/parsers/block/footnotes4'
   require 'nml/grammar/parsers/block/paragraph4'
+  require 'nml/grammar/parsers/block/quote4'
   require 'nml/grammar/parsers/block/table4'
 
   require 'nml/grammar/parsers/block/blocks4'
@@ -21,6 +22,7 @@ module NML::Grammar::Parsers::Block
   require 'nml/grammar/parsers/block/footnotes3'
   require 'nml/grammar/parsers/block/itemization3'
   require 'nml/grammar/parsers/block/paragraph3'
+  require 'nml/grammar/parsers/block/quote3'
   require 'nml/grammar/parsers/block/table3'
 
   require 'nml/grammar/parsers/block/blocks3'
@@ -32,6 +34,7 @@ module NML::Grammar::Parsers::Block
   require 'nml/grammar/parsers/block/footnotes2'
   require 'nml/grammar/parsers/block/itemization2'
   require 'nml/grammar/parsers/block/paragraph2'
+  require 'nml/grammar/parsers/block/quote2'
   require 'nml/grammar/parsers/block/table2'
 
   require 'nml/grammar/parsers/block/blocks2'
@@ -43,6 +46,7 @@ module NML::Grammar::Parsers::Block
   require 'nml/grammar/parsers/block/footnotes1'
   require 'nml/grammar/parsers/block/itemization1'
   require 'nml/grammar/parsers/block/paragraph1'
+  require 'nml/grammar/parsers/block/quote1'
   require 'nml/grammar/parsers/block/table1'
 
   require 'nml/grammar/parsers/block/section2'

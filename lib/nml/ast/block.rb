@@ -12,6 +12,7 @@ module NML::AST::Block
   autoload :Item, 'nml/ast/block/item'
   autoload :Itemization, 'nml/ast/block/itemization'
   autoload :Paragraph, 'nml/ast/block/paragraph'
+  autoload :Quote, 'nml/ast/block/quote'
   autoload :Section, 'nml/ast/block/section'
   autoload :Table, 'nml/ast/block/table'
   autoload :Term, 'nml/ast/block/term'

@@ -8,6 +8,7 @@ module NML::Grammar::Parsers::Block
     include Inlines1
     include Itemization1
     include Paragraph1
+    include Quote1
     include Section1
     include Table1
 
@@ -50,6 +51,7 @@ module NML::Grammar::Parsers::Block
       enumeration1 /
       itemization1 /
       paragraph1 /
+      quote1 /
       table1
     end
 

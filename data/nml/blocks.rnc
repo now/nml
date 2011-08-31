@@ -61,3 +61,8 @@ enumeration = element enumeration { enumeration.attributes, enumeration.content 
 enumeration.attributes = common.attributes
 enumeration.content = item+
 common.block.elements |= enumeration
+
+block.quote = element quote { block.quote.attributes, block.quote.content }
+block.quote.attributes = common.attributes
+block.quote.content = line+
+common.block.elements |= block.quote

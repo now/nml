@@ -4,6 +4,7 @@ module NML::Grammar::Parsers::Block
     include Code4
     include Footnotes4
     include Paragraph4
+    include Quote4
     include Table4
 
     rule blocks4
@@ -22,6 +23,7 @@ module NML::Grammar::Parsers::Block
     rule block4
       code4 /
       paragraph4 /
+      quote4 /
       table4
     end
   end

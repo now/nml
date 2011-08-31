@@ -46,6 +46,10 @@ treetops = %w[
   lib/nml/grammar/parsers/block/paragraph2.treetop
   lib/nml/grammar/parsers/block/paragraph3.treetop
   lib/nml/grammar/parsers/block/paragraph4.treetop
+  lib/nml/grammar/parsers/block/quote1.treetop
+  lib/nml/grammar/parsers/block/quote2.treetop
+  lib/nml/grammar/parsers/block/quote3.treetop
+  lib/nml/grammar/parsers/block/quote4.treetop
   lib/nml/grammar/parsers/block/row.treetop
   lib/nml/grammar/parsers/block/section1.treetop
   lib/nml/grammar/parsers/block/section2.treetop

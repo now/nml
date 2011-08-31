@@ -1,0 +1,12 @@
+module NML::Grammar::Parsers::Block
+  grammar Quote4
+    include Common
+    include Inlines4
+
+    rule quote4
+      '      > ' first:inlines4
+      rest:("\n      > " inlines:inlines4)*
+      <NML::Grammar::Nodes::Block::Quote>
+    end
+  end
+end
