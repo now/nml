@@ -72,7 +72,7 @@
   <func:function name="nml:title-name">
     <xsl:param name="title" select="."/>
 
-    <func:result select="nml:downcase-ascii(nml:remove-non-ascii-alpha-numerics(translate($title, ' ', '-')))"/>
+    <func:result select="nml:downcase-ascii(nml:remove-non-ascii-alpha-numerics(translate(normalize-space($title), ' ', '-')))"/>
   </func:function>
 
   <func:function name="nml:remove-non-ascii-alpha-numerics">
