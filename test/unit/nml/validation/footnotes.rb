@@ -20,4 +20,8 @@ Expectations do
   expect NML.ast("Title\n\n§ Title¹\n\n¹ Email me at mailto:example@example.com") do |ast|
     NML::Validation::Footnotes.call(ast)
   end
+
+  expect NML.ast("Title\n\n§ Title¹⁺²\n\n¹ Email me at mailto:example@example.com\n² Email me at mailto:example@example.com") do |ast|
+    NML::Validation::Footnotes.call(ast)
+  end
 end

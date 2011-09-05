@@ -30,13 +30,18 @@ private
         new('footnote not defined: %s' % node.identifier,
             node.line,
             node.column) unless @environment.defined? node.identifier
+      validate_children node
     when String
     when NML::AST::Node
-      node.each do |child|
-        validate child
-      end
+      validate_children node
     else
       raise TypeError, 'unknown node type: %p' % [node]
+    end
+  end
+
+  def validate_children(node)
+    node.each do |child|
+      validate child
     end
   end
 
