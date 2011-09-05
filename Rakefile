@@ -56,6 +56,7 @@ treetops = %w[
   lib/nml/grammar/parsers/block/table1.treetop
   lib/nml/grammar/parsers/block/table2.treetop
   lib/nml/grammar/parsers/block/table3.treetop
+  lib/nml/grammar/parsers/block/table4.treetop
   lib/nml/grammar/parsers/inline/code.treetop
   lib/nml/grammar/parsers/inline/emphasis.treetop
   lib/nml/grammar/parsers/inline/group.treetop

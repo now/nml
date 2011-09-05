@@ -42,6 +42,7 @@ lib/nml/grammar/parsers/block/section2.rb
 lib/nml/grammar/parsers/block/table1.rb
 lib/nml/grammar/parsers/block/table2.rb
 lib/nml/grammar/parsers/block/table3.rb
+lib/nml/grammar/parsers/block/table4.rb
 lib/nml/grammar/parsers/inline/code.rb
 lib/nml/grammar/parsers/inline/emphasis.rb
 lib/nml/grammar/parsers/inline/group.rb
