@@ -29,10 +29,14 @@ private
     when String
       node
     when NML::AST::Node
-      node.copy(*node.map{ |child| inline child })
+      node.copy(*inline_children(node))
     else
       raise TypeError, 'unknown node type: %p' % [node]
     end
+  end
+
+  def inline_children(node)
+    node.map{ |child| inline child }
   end
 
   Inlines = {
@@ -45,7 +49,7 @@ private
   end
 
   def footnote(definition, node)
-    Inlines[definition].new(*(definition.to_a + node.to_a))
+    Inlines[definition].new(*(definition.to_a + inline_children(node)))
   end
 
   class Environment
