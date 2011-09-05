@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 module NML::Parser::Extensions
-  def ast(string)
+  def ast(string, options = {})
     parser = new
-    tree = parser.parse(string) or
+    tree = parser.parse(string, options) or
       raise NML::Parser::Error.
         new('expected %s%s' %
               [parser.terminal_failures.count > 1 ? 'one of ' : '',
