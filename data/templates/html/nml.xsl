@@ -49,6 +49,50 @@
     <func:result select="$uri"/>
   </func:function>
 
+  <func:function name="nml:title-id">
+    <xsl:param name="node" select="."/>
+
+    <xsl:choose>
+      <xsl:when test="$node/@xml:id">
+        <func:result select="$node/@xml:id"/>
+      </xsl:when>
+
+      <xsl:otherwise>
+        <func:result>
+          <xsl:for-each select="$node/../ancestor::section/title">
+            <xsl:value-of select="nml:title-name()"/>
+            <xsl:text>-</xsl:text>
+          </xsl:for-each>
+          <xsl:value-of select="nml:title-name($node)"/>
+        </func:result>
+      </xsl:otherwise>
+    </xsl:choose>
+  </func:function>
+
+  <func:function name="nml:title-name">
+    <xsl:param name="title" select="."/>
+
+    <func:result select="nml:downcase-ascii(nml:remove-non-ascii-alpha-numerics(translate($title, ' ', '-')))"/>
+  </func:function>
+
+  <func:function name="nml:remove-non-ascii-alpha-numerics">
+    <xsl:param name="string"/>
+
+    <func:result select="translate($string,
+                                   translate($string,
+                                             'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890-',
+                                             ''),
+                                   '')"/>
+  </func:function>
+
+  <func:function name="nml:downcase-ascii">
+    <xsl:param name="string"/>
+
+    <func:result select="translate($string,
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+      'abcdefghijklmnopqrstuvwxyz')"/>
+  </func:function>
+
   <xsl:template match="nml">
     <xsl:text disable-output-escaping="yes"><![CDATA[<!DOCTYPE html>]]>&#x0a;</xsl:text>
     <html>
@@ -97,7 +141,7 @@
   <xsl:template name="nml.body.footer"/>
 
   <xsl:template match="title">
-    <h1>
+    <h1 id="{nml:title-id()}">
       <xsl:apply-templates select="@*|node()"/>
     </h1>
   </xsl:template>
