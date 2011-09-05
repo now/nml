@@ -57,8 +57,15 @@ module NML::Grammar::Parsers::Block
 
     rule sections
       (blankline+
-       section:section1)*
+       section:footnotedsection1)*
       <NML::Grammar::Nodes::Block::Sections>
+    end
+
+    rule footnotedsection1
+      block:section1
+      footnotes:(blankline+
+                 footnotes:footnotes1)?
+      <NML::Grammar::Nodes::Block::Footnoted>
     end
   end
 end

@@ -27,7 +27,7 @@ class NML::CLI < Ame::Root
 private
 
   def nmlize(file, input)
-    $stdout.write NML::Output::NML.call(NML.ast(input.read))
+    $stdout.write NML::Output::NML.call(NML::Validation::Footnotes.call(NML.ast(input.read)))
   rescue NML::Parser::Error => e
     raise unless file
     raise e, '%s:%s' % [file, e.message]

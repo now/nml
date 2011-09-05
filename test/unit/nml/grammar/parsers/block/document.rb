@@ -109,4 +109,18 @@ Expectations do
                NML::AST::Block::Paragraph.new('End')) do
     NML::Grammar::Parsers::Block::DocumentParser.ast("Title\n\n= A\n    1\n\n  End")
   end
+
+  expect NML::AST::Block::Document.
+           new(NML::AST::Block::Title.new('Title'),
+               NML::AST::Block::Footnoted.
+                 new(NML::AST::Block::Section.
+                       new(NML::AST::Block::Title.
+                             new(NML::AST::Inline::Footnote.new('¹', 3, 9, 'Title'))),
+                     NML::AST::Block::Footnotes.
+                       new(NML::AST::Block::Footnote.
+                             new('¹', 5, 1,
+                                 NML::AST::Block::Footnote::Link.
+                                   new('Email me', 'mailto:example@example.com'))))) do
+    NML::Grammar::Parsers::Block::DocumentParser.ast("Title\n\n§ Title¹\n\n¹ Email me at mailto:example@example.com")
+  end
 end
