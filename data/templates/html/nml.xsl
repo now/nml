@@ -109,7 +109,8 @@
     <xsl:call-template name="copy"/>
   </xsl:template>
 
-  <xsl:template match="nml/code |
+  <xsl:template match="item/code |
+                       nml/code |
                        section/code">
     <pre>
       <xsl:call-template name="copy.code.attributes"/>
@@ -185,7 +186,8 @@
     </ul>
   </xsl:template>
 
-  <xsl:template match="nml/quote |
+  <xsl:template match="item/quote |
+                       nml/quote |
                        section/quote">
     <blockquote>
       <xsl:apply-templates select="@*|node()"/>
