@@ -283,13 +283,13 @@
   </xsl:template>
 
   <xsl:template match="image">
-    <img src="nml:adjust-uri()">
+    <img src="{nml:adjust-uri()}">
       <xsl:call-template name="copy.common-attributes"/>
     </img>
   </xsl:template>
 
   <xsl:template match="ref">
-    <a href="nml:adjust-uri()">
+    <a href="{nml:adjust-uri()}">
       <xsl:call-template name="copy.common-attributes"/>
       <xsl:copy-of select="@title"/>
       <xsl:if test="@relation">
