@@ -28,6 +28,9 @@ private
 
     def output(node)
       case node
+      when NML::AST::Block::Code
+        block
+        @output << node.entries.join('').split("\n").map{ |line| margin + '    ' + line }.join("\n")
       when NML::AST::Block::Document
         children node
       when NML::AST::Block::Enumeration

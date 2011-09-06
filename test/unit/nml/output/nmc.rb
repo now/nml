@@ -24,4 +24,8 @@ Expectations do
   expect "Title\n\n  Line11\n\n§ Title\n\n    Line21" do
     NML::Output::NMC.new(NML.ast("Title\n\n  Line11\n\n§ Title\n\n    Line21")).call
   end
+
+  expect "Title\n\n    Line11\n    Line12" do |o|
+    NML::Output::NMC.new(NML.ast(o)).call
+  end
 end

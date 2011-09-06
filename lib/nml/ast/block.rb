@@ -2,9 +2,9 @@
 
 module NML::AST::Block
   autoload :Code, 'nml/ast/block/code'
-  autoload :Document, 'nml/ast/block/document'
   autoload :Definition, 'nml/ast/block/definition'
   autoload :Definitions, 'nml/ast/block/definitions'
+  autoload :Document, 'nml/ast/block/document'
   autoload :Enumeration, 'nml/ast/block/enumeration'
   autoload :Footnote, 'nml/ast/block/footnote'
   autoload :Footnoted, 'nml/ast/block/footnoted'
