@@ -28,18 +28,12 @@ private
 
     def output(node)
       case node
-      when NML::AST::Inline::Code
-        inline '‹', node, '›'
       when NML::AST::Block::Document
         children node
-      when NML::AST::Inline::Emphasis
-        inline '/', node, '/'
       when NML::AST::Block::Enumeration
         block
         numbers = ['₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉', '₀']
         items(node){ numbers.shift + ' ' }
-      when NML::AST::Inline::Group
-        inline '{', node, '}'
       when NML::AST::Block::Itemization
         block
         items(node){ '• ' }
@@ -55,6 +49,12 @@ private
         end
       when NML::AST::Block::Title
         children node
+      when NML::AST::Inline::Code
+        inline '‹', node, '›'
+      when NML::AST::Inline::Emphasis
+        inline '/', node, '/'
+      when NML::AST::Inline::Group
+        inline '{', node, '}'
       when String
         @output << node
       else
