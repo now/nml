@@ -1,6 +1,6 @@
                                       NML
 
-  NML is a neat markup language.
+  NML is no markup language.  It thus stands for No Markup Language.
 
 § Block Structures
 
@@ -23,7 +23,7 @@
       2×(1+n) spaces, where /n/ is the current section level (nesting).  The
       first paragraph of this document was thus written as
 
-          NML is a neat markup language.
+          NML is no markup language.
 
       Actually, this indention rule is common for all block elements.  That is,
       the current indention tells you how deeply you are nested and tells an
@@ -36,7 +36,7 @@
       the previous section).  Thus, the code block from the previous section
       was written as
 
-                  NML is a neat markup language.
+                  NML is no markup language.
 
       Empty lines are skipped, so don’t require the indention to be present.
 
