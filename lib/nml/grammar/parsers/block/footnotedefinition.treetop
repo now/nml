@@ -7,8 +7,12 @@ module NML::Grammar::Parsers::Block
       link
     end
 
+    # NOTE: This is rather loose now with the [\s]+.  The best would be to only
+    # allow properly indented footnotes, but that gets rather complicated.
+    # Check how complicated it gets, however, before going with this.  Do
+    # level 1, at least, and see.
     rule link
-      title:(!(' at ' [\S]+ / "\n") .)+ ' at ' uri:[\S]+
+      title:(!(space 'at' [\s]+ [\S]+ / "\n") .)+ space 'at' [\s]+ uri:[\S]+
       <NML::Grammar::Nodes::Block::Footnote::Link>
     end
 

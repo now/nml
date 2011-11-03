@@ -44,7 +44,7 @@ definitions.item.content = term+, definition
 term = element term { term.attributes, common.inline.content }
 term.attributes = common.attributes
 
-definition = element definition { definition.attributes, definitions.content }
+definition = element definition { definition.attributes, definition.content }
 definition.attributes = common.attributes
 definition.content = common.block.content
 
