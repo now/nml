@@ -4,7 +4,7 @@ require 'lookout/rake/tasks'
 require 'yard'
 
 Lookout::Rake::Tasks::Test.new do |t|
-  t.requires << 'test/lib/lookout/nokogiri'
+  t.requires << './test/lib/lookout/nokogiri'
 end
 Lookout::Rake::Tasks::Gem.new
 Lookout::Rake::Tasks::Tags.new
@@ -71,7 +71,11 @@ rule '.rb' => ['.treetop'] do |t|
   require 'treetop' unless defined? Treetop
   when_writing 'tt %s' % t.source do
     puts 'tt %s' % t.source if verbose
-    Treetop::Compiler::GrammarCompiler.new.compile(t.source)
+    Treetop::Compiler::GrammarCompiler.new.compile(t.source, t.name)
+    contents = File.read(t.name)
+    File.open(t.name, 'wb') do |f|
+      f.puts("# -*- coding: utf-8 -*-", contents)
+    end
   end
 end
 

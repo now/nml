@@ -115,7 +115,7 @@ Expectations do
                NML::AST::Block::Footnoted.
                  new(NML::AST::Block::Section.
                        new(NML::AST::Block::Title.
-                             new(NML::AST::Inline::Footnote.new('¹', 3, 9, 'Title'))),
+                             new(NML::AST::Inline::Footnote.new('¹', 3, 8, 'Title'))),
                      NML::AST::Block::Footnotes.
                        new(NML::AST::Block::Footnote.
                              new('¹', 5, 1,
