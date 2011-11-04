@@ -38,7 +38,7 @@ module NML::Grammar::Parsers::Inline
     end
 
     rule footnote
-      ('¹' / '²' / '³' / '⁴' / '⁵' / '⁶' / '⁷' / '⁸' / '⁹')
+      [¹²³⁴⁵⁶⁷⁸⁹]
       <NML::Grammar::Nodes::Inline::Footnote>
     end
   end
