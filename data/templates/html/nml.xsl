@@ -351,4 +351,18 @@
       <xsl:apply-templates select="node()"/>
     </q>
   </xsl:template>
+
+  <xsl:template match="subscript">
+    <sub>
+      <xsl:call-template name="copy.common-attributes"/>
+      <xsl:apply-templates select="node()"/>
+    </sub>
+  </xsl:template>
+
+  <xsl:template match="superscript">
+    <sup>
+      <xsl:call-template name="copy.common-attributes"/>
+      <xsl:apply-templates select="node()"/>
+    </sup>
+  </xsl:template>
 </xsl:stylesheet>
