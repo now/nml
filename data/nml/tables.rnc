@@ -1,7 +1,7 @@
 table = element table { table.attributes, table.content }
 table.attributes = common.attributes
 table.content =
-  head,
+  head?,
   body
 common.block.elements |= table
 
@@ -18,7 +18,7 @@ cell.attributes =
   common.attributes,
   attribute columnspan { text }?,
   attribute rowspan { text }?
-cell.content = common.block.content
+cell.content = (common.inline.content | common.block.content)
 
 body = element body { body.attributes, body.content }
 body.attributes = common.attributes
