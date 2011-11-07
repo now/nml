@@ -17,7 +17,7 @@ class NML::CLI < Ame::Root
       nmlize nil, $stdin
     else
       files.each do |file|
-        File.open(file, 'rb') do |input|
+        File.open(file, 'r') do |input|
           nmlize file, input
         end
       end
