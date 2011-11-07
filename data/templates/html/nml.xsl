@@ -49,6 +49,14 @@
     <func:result select="$uri"/>
   </func:function>
 
+  <xsl:template name="id-by-title">
+    <xsl:if test="not(@xml:id)">
+      <xsl:attribute name="id">
+        <xsl:value-of select="nml:title-id(title)"/>
+      </xsl:attribute>
+    </xsl:if>
+  </xsl:template>
+
   <func:function name="nml:title-id">
     <xsl:param name="node" select="."/>
 
@@ -134,14 +142,22 @@
 
   <xsl:template name="nml.body.article">
     <article>
+      <xsl:call-template name="id-by-title"/>
       <xsl:apply-templates/>
     </article>
   </xsl:template>
 
   <xsl:template name="nml.body.footer"/>
 
+  <xsl:template match="section">
+    <section>
+      <xsl:call-template name="id-by-title"/>
+      <xsl:apply-templates select="@*|node()"/>
+    </section>
+  </xsl:template>
+
   <xsl:template match="title">
-    <h1 id="{nml:title-id()}">
+    <h1>
       <xsl:apply-templates select="@*|node()"/>
     </h1>
   </xsl:template>
